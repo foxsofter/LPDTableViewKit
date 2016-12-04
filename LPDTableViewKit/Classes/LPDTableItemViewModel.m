@@ -1,21 +1,21 @@
 //
-//  LPDTableBindingViewModel.m
+//  LPDTableItemViewModel.m
 //  LPDTableViewKit
 //
 //  Created by foxsofter on 16/1/8.
 //  Copyright © 2016年 eleme. All rights reserved.
 //
 
-#import "LPDTableBindingViewModel.h"
+#import "LPDTableItemViewModel.h"
 #import "LPDTableViewModelProtocol.h"
 
-@implementation LPDTableBindingViewModel {
+@implementation LPDTableItemViewModel {
   __weak __kindof id<LPDTableViewModelProtocol> _viewModel;
   NSString *_reuseIdentifier;
   NSString *_reuseViewClass;
 }
 
-#pragma mark - LPDTableBindingViewModelProtocol
+#pragma mark - LPDTableItemViewModelProtocol
 
 - (instancetype)initWithViewModel:(__kindof id<LPDTableViewModelProtocol>)viewModel {
   self = [super init];

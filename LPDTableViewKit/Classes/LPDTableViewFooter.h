@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LPDTableViewBindingProtocol.h"
+#import "LPDTableViewItemProtocol.h"
 
-@interface LPDTableViewFooter : UITableViewHeaderFooterView <LPDTableViewBindingProtocol>
+@interface LPDTableViewFooter : UITableViewHeaderFooterView <LPDTableViewItemProtocol>
 + (instancetype) new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;

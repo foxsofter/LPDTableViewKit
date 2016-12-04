@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LPDTableBindingViewModel.h"
+#import "LPDTableItemViewModel.h"
 
-@interface LPDTableFooterViewModel : LPDTableBindingViewModel
+@interface LPDTableFooterViewModel : LPDTableItemViewModel
 + (instancetype) new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 @end

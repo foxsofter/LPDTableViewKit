@@ -15,15 +15,15 @@
   return [[self alloc] init];
 }
 
-- (NSMutableArray<__kindof id<LPDTableBindingViewModelProtocol>> *)mutableRows {
+- (NSMutableArray<__kindof id<LPDTableItemViewModelProtocol>> *)mutableRows {
   return _mutableRows ?: (_mutableRows = [NSMutableArray array]);
 }
 
-- (NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)rows {
+- (NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)rows {
   return [_mutableRows copy];
 }
 
-- (void)setRows:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)rows {
+- (void)setRows:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)rows {
   if (rows) {
     if ([rows isKindOfClass:[NSMutableArray class]]) {
       _mutableRows = (NSMutableArray *)rows;

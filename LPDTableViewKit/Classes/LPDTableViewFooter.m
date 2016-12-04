@@ -10,13 +10,13 @@
 
 @interface LPDTableViewFooter ()
 
-@property (nullable, nonatomic, weak, readwrite) __kindof id<LPDTableBindingViewModelProtocol> viewModel;
+@property (nullable, nonatomic, weak, readwrite) __kindof id<LPDTableItemViewModelProtocol> viewModel;
 
 @end
 
 @implementation LPDTableViewFooter
 
-- (void)bindingTo:(__kindof id<LPDTableBindingViewModelProtocol>)viewModel {
+- (void)bindingTo:(__kindof id<LPDTableItemViewModelProtocol>)viewModel {
   NSParameterAssert(viewModel);
   self.viewModel = viewModel;
 }

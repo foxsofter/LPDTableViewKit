@@ -98,7 +98,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 
 #pragma mark - LPDTableViewModelProtocol
 
-- (nullable NSIndexPath *)indexPathForCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel {
+- (nullable NSIndexPath *)indexPathForCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel {
   if (!cellViewModel) {
     return nil;
   }
@@ -116,7 +116,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return nil;
 }
 
-- (nullable __kindof id<LPDTableBindingViewModelProtocol>)cellViewModelFromIndexPath:(NSIndexPath *)indexPath {
+- (nullable __kindof id<LPDTableItemViewModelProtocol>)cellViewModelFromIndexPath:(NSIndexPath *)indexPath {
   if (nil == indexPath) {
     return nil;
   }
@@ -134,7 +134,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return nil;
 }
 
-- (NSInteger)sectionIndexForHeaderViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)headerViewModel {
+- (NSInteger)sectionIndexForHeaderViewModel:(__kindof id<LPDTableItemViewModelProtocol>)headerViewModel {
   if (!headerViewModel) {
     return -1;
   }
@@ -149,7 +149,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return -1;
 }
 
-- (nullable __kindof id<LPDTableBindingViewModelProtocol>)headerViewModelFromSection:(NSInteger)sectionIndex {
+- (nullable __kindof id<LPDTableItemViewModelProtocol>)headerViewModelFromSection:(NSInteger)sectionIndex {
   if (sectionIndex < 0 || sectionIndex >= self.sections.count) {
     return nil;
   }
@@ -160,7 +160,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return nil;
 }
 
-- (NSInteger)sectionIndexForFooterViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)footerViewModel {
+- (NSInteger)sectionIndexForFooterViewModel:(__kindof id<LPDTableItemViewModelProtocol>)footerViewModel {
   if (!footerViewModel) {
     return -1;
   }
@@ -175,7 +175,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return -1;
 }
 
-- (nullable __kindof id<LPDTableBindingViewModelProtocol>)footerViewModelFromSection:(NSInteger)sectionIndex {
+- (nullable __kindof id<LPDTableItemViewModelProtocol>)footerViewModelFromSection:(NSInteger)sectionIndex {
   if (sectionIndex < 0 || sectionIndex >= self.sections.count) {
     return nil;
   }
@@ -186,26 +186,26 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return nil;
 }
 
-- (void)addCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel {
+- (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel {
   EnsureOneSectionExists;
 
   [self addCellViewModel:cellViewModel toSection:self.sections.count - 1 withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)addCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
         withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
 
   [self addCellViewModel:cellViewModel toSection:self.sections.count - 1 withRowAnimation:animation];
 }
 
-- (void)addCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel toSection:(NSUInteger)sectionIndex {
+- (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel toSection:(NSUInteger)sectionIndex {
   EnsureOneSectionExists;
 
   [self addCellViewModel:cellViewModel toSection:sectionIndex withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)addCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
                toSection:(NSUInteger)sectionIndex
         withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -217,14 +217,14 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
            withRowAnimation:animation];
 }
 
-- (void)addCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
            withAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
 
   [self addCellViewModel:cellViewModel toSection:self.sections.count - 1 withAnimation:animation];
 }
 
-- (void)addCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
                toSection:(NSUInteger)sectionIndex
            withAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -242,7 +242,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 }
 
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels {
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels {
   EnsureOneSectionExists;
 
   [self addCellViewModels:cellViewModels
@@ -250,21 +250,21 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
          withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
          withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
 
   [self addCellViewModels:cellViewModels toSection:self.sections.count - 1 withRowAnimation:animation];
 }
 
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                 toSection:(NSUInteger)sectionIndex {
   EnsureOneSectionExists;
 
   [self addCellViewModels:cellViewModels toSection:sectionIndex withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                 toSection:(NSUInteger)sectionIndex
          withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -276,7 +276,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
             withRowAnimation:animation];
 }
 
-- (void)insertCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel atIndex:(NSUInteger)index {
+- (void)insertCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel atIndex:(NSUInteger)index {
   EnsureOneSectionExists;
 
   [self insertCellViewModel:cellViewModel
@@ -285,7 +285,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
            withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)insertCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)insertCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
                     atIndex:(NSUInteger)index
            withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -293,7 +293,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   [self insertCellViewModel:cellViewModel atIndex:index inSection:self.sections.count - 1 withRowAnimation:animation];
 }
 
-- (void)insertCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)insertCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
                     atIndex:(NSUInteger)index
                   inSection:(NSUInteger)sectionIndex {
   EnsureOneSectionExists;
@@ -304,7 +304,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
            withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)insertCellViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)cellViewModel
+- (void)insertCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel
                     atIndex:(NSUInteger)index
                   inSection:(NSUInteger)sectionIndex
            withRowAnimation:(UITableViewRowAnimation)animation {
@@ -312,7 +312,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 
   if (sectionIndex < self.sections.count) {
     for (LPDTableSectionViewModel *section in self.sections) {
-      for (id<LPDTableBindingViewModelProtocol> currentCellViewModel in section.mutableRows) {
+      for (id<LPDTableItemViewModelProtocol> currentCellViewModel in section.mutableRows) {
         if (currentCellViewModel == cellViewModel) {
           return;
         }
@@ -331,7 +331,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 }
 
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                      atIndex:(NSUInteger)index {
   EnsureOneSectionExists;
 
@@ -341,7 +341,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
             withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                      atIndex:(NSUInteger)index
             withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -349,7 +349,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   [self insertCellViewModels:cellViewModels atIndex:index inSection:self.sections.count - 1 withRowAnimation:animation];
 }
 
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                      atIndex:(NSUInteger)index
                    inSection:(NSUInteger)sectionIndex {
   EnsureOneSectionExists;
@@ -360,7 +360,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
             withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                      atIndex:(NSUInteger)index
                    inSection:(NSUInteger)sectionIndex
             withRowAnimation:(UITableViewRowAnimation)animation {
@@ -374,7 +374,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
     }
 
     for (LPDTableSectionViewModel *section in self.sections) {
-      for (id<LPDTableBindingViewModelProtocol> currentCellViewModel in section.mutableRows) {
+      for (id<LPDTableItemViewModelProtocol> currentCellViewModel in section.mutableRows) {
         if ([cellViewModels containsObject:currentCellViewModel]) {
           return;
         }
@@ -397,7 +397,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 }
 
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                      atIndex:(NSUInteger)index
                withAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -405,7 +405,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   [self insertCellViewModels:cellViewModels atIndex:index inSection:self.sections.count - 1 withAnimation:animation];
 }
 
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                      atIndex:(NSUInteger)index
                    inSection:(NSUInteger)sectionIndex
                withAnimation:(UITableViewRowAnimation)animation {
@@ -529,14 +529,14 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 }
 
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                     fromIndex:(NSUInteger)index {
   EnsureOneSectionExists;
 
   [self replaceCellViewModels:cellViewModels fromIndex:index inSection:self.sections.count - 1];
 }
 
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                     fromIndex:(NSUInteger)index
              withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -544,7 +544,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   [self replaceCellViewModels:cellViewModels fromIndex:index inSection:self.sections.count - 1];
 }
 
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                     fromIndex:(NSUInteger)index
                     inSection:(NSUInteger)sectionIndex {
   EnsureOneSectionExists;
@@ -555,7 +555,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
              withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                     fromIndex:(NSUInteger)index
                     inSection:(NSUInteger)sectionIndex
              withRowAnimation:(UITableViewRowAnimation)animation {
@@ -575,7 +575,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 
   for (LPDTableSectionViewModel *section in self.sections) {
-    for (id<LPDTableBindingViewModelProtocol> currentCellViewModel in section.mutableRows) {
+    for (id<LPDTableItemViewModelProtocol> currentCellViewModel in section.mutableRows) {
       if ([cellViewModels containsObject:currentCellViewModel]) {
         return;
       }
@@ -609,14 +609,14 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 }
 
 - (void)addSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-         withCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels {
+         withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels {
   [self addSectionViewModel:sectionViewModel
          withCellViewModels:cellViewModels
            withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)addSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-         withCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+         withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
            withRowAnimation:(UITableViewRowAnimation)animation {
   if ([self.sections containsObject:sectionViewModel]) {
     return;
@@ -628,7 +628,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 
   for (LPDTableSectionViewModel *section in self.sections) {
-    for (id<LPDTableBindingViewModelProtocol> currentCellViewModel in section.mutableRows) {
+    for (id<LPDTableItemViewModelProtocol> currentCellViewModel in section.mutableRows) {
       if ([cellViewModels containsObject:currentCellViewModel]) {
         return;
       }
@@ -661,7 +661,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 }
 
 - (void)insertSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-            withCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+            withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                        atIndex:(NSUInteger)index {
   [self insertSectionViewModel:sectionViewModel
             withCellViewModels:cellViewModels
@@ -670,7 +670,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 }
 
 - (void)insertSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-            withCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+            withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                        atIndex:(NSUInteger)index
               withRowAnimation:(UITableViewRowAnimation)animation {
   if (index <= self.sections.count) {
@@ -685,7 +685,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
     }
 
     for (LPDTableSectionViewModel *section in self.sections) {
-      for (id<LPDTableBindingViewModelProtocol> currentCellViewModel in section.mutableRows) {
+      for (id<LPDTableItemViewModelProtocol> currentCellViewModel in section.mutableRows) {
         if ([cellViewModels containsObject:currentCellViewModel]) {
           return;
         }
@@ -752,7 +752,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   }
 }
 
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels {
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels {
   EnsureOneSectionExists;
 
   [self replaceSectionWithCellViewModels:cellViewModels
@@ -760,14 +760,14 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
                         withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                         withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
 
   [self replaceSectionWithCellViewModels:cellViewModels atSection:self.sections.count - 1 withRowAnimation:animation];
 }
 
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                                atSection:(NSUInteger)sectionIndex {
   EnsureOneSectionExists;
 
@@ -776,7 +776,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
                         withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *)cellViewModels
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
                                atSection:(NSUInteger)sectionIndex
                         withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
@@ -789,7 +789,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
     }
 
     for (LPDTableSectionViewModel *section in self.sections) {
-      for (id<LPDTableBindingViewModelProtocol> currentCellViewModel in section.mutableRows) {
+      for (id<LPDTableItemViewModelProtocol> currentCellViewModel in section.mutableRows) {
         if ([cellViewModels containsObject:currentCellViewModel]) {
           return;
         }
@@ -1034,14 +1034,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   // 这一步如果高度已经设定，那么直接返回设定的高度
-  id<LPDTableBindingViewModelProtocol> cellViewModel = [self.viewModel cellViewModelFromIndexPath:indexPath];
+  id<LPDTableItemViewModelProtocol> cellViewModel = [self.viewModel cellViewModelFromIndexPath:indexPath];
   if (cellViewModel && [(NSObject *)cellViewModel respondsToSelector:@selector(height)] && cellViewModel.height > 0) {
     return cellViewModel.height;
   }
 
   if ([[UIDevice currentDevice].systemVersion floatValue] < 9.0) {
     // 需要提前创建cell并进行绑定才能计算出高度
-    id<LPDTableViewBindingProtocol> cell =
+    id<LPDTableViewItemProtocol> cell =
     [self.viewModel.tableViewFactory tableViewModel:self.viewModel cellForTableView:tableView atIndexPath:indexPath];
     cellViewModel = cell.viewModel;
   }
@@ -1084,7 +1084,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   id<LPDTableSectionViewModelProtocol> sectionViewModel = self.viewModel.sections[section];
   if ([sectionViewModel respondsToSelector:@selector(headerViewModel)]) {
-    id<LPDTableBindingViewModelProtocol> headerViewModel = sectionViewModel.headerViewModel;
+    id<LPDTableItemViewModelProtocol> headerViewModel = sectionViewModel.headerViewModel;
     return (UIView *)[self.viewModel.tableViewFactory headerWithViewModel:headerViewModel tableView:tableView];
   } else if ([sectionViewModel respondsToSelector:@selector(headerTitle)]) {
     LPDTableViewHeader *defaultHeader =
@@ -1102,7 +1102,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
   id<LPDTableSectionViewModelProtocol> sectionViewModel = self.viewModel.sections[section];
   if ([sectionViewModel respondsToSelector:@selector(footerViewModel)]) {
-    id<LPDTableBindingViewModelProtocol> footerViewModel = sectionViewModel.footerViewModel;
+    id<LPDTableItemViewModelProtocol> footerViewModel = sectionViewModel.footerViewModel;
     return (UIView *)[self.viewModel.tableViewFactory footerWithViewModel:footerViewModel tableView:tableView];
   } else if ([sectionViewModel respondsToSelector:@selector(footerTitle)]) {
     LPDTableViewFooter *defaultFooter =

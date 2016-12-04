@@ -11,10 +11,10 @@
 
 @implementation LPDTableViewFactory
 
-- (__kindof id<LPDTableViewBindingProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
+- (__kindof id<LPDTableViewItemProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
                                           cellForTableView:(UITableView *)tableView
                                                atIndexPath:(NSIndexPath *)indexPath {
-  __kindof id<LPDTableBindingViewModelProtocol> cellViewModel = [tableViewModel cellViewModelFromIndexPath:indexPath];
+  __kindof id<LPDTableItemViewModelProtocol> cellViewModel = [tableViewModel cellViewModelFromIndexPath:indexPath];
   if (cellViewModel) {
     return [self cellWithViewModel:cellViewModel tableView:tableView];
   }
@@ -22,7 +22,7 @@
   return nil;
 }
 
-- (__kindof id<LPDTableViewBindingProtocol>)cellWithViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)viewModel
+- (__kindof id<LPDTableViewItemProtocol>)cellWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
                                                     tableView:(UITableView *)tableView {
   Class viewClass = NSClassFromString(viewModel.reuseViewClass);
   NSString *xibPath = [[NSBundle mainBundle] pathForResource:viewModel.reuseViewClass ofType:@"nib"];
@@ -33,7 +33,7 @@
     [tableView registerClass:viewClass forCellReuseIdentifier:viewModel.reuseIdentifier];
   }
 
-  id<LPDTableViewBindingProtocol> cell = [tableView dequeueReusableCellWithIdentifier:viewModel.reuseIdentifier];
+  id<LPDTableViewItemProtocol> cell = [tableView dequeueReusableCellWithIdentifier:viewModel.reuseIdentifier];
   if (!cell) {
     cell = [[viewClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:viewModel.reuseIdentifier];
   }
@@ -42,10 +42,10 @@
   return cell;
 }
 
-- (__kindof id<LPDTableViewBindingProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
+- (__kindof id<LPDTableViewItemProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
                                         headerForTableView:(UITableView *)tableView
                                                  atSection:(NSInteger)sectionIndex {
-  __kindof id<LPDTableBindingViewModelProtocol> headerViewModel =
+  __kindof id<LPDTableItemViewModelProtocol> headerViewModel =
     [tableViewModel headerViewModelFromSection:sectionIndex];
   if (headerViewModel) {
     return [self hfWithViewModel:headerViewModel tableView:tableView];
@@ -53,10 +53,10 @@
   return nil;
 }
 
-- (__kindof id<LPDTableViewBindingProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
+- (__kindof id<LPDTableViewItemProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
                                         footerForTableView:(UITableView *)tableView
                                                  atSection:(NSInteger)sectionIndex {
-  __kindof id<LPDTableBindingViewModelProtocol> footerViewModel =
+  __kindof id<LPDTableItemViewModelProtocol> footerViewModel =
     [tableViewModel footerViewModelFromSection:sectionIndex];
   if (footerViewModel) {
     return [self hfWithViewModel:footerViewModel tableView:tableView];
@@ -64,12 +64,12 @@
   return nil;
 }
 
-- (__kindof id<LPDTableViewBindingProtocol>)hfWithViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)viewModel
+- (__kindof id<LPDTableViewItemProtocol>)hfWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
                                                   tableView:(UITableView *)tableView {
   Class viewClass = NSClassFromString(viewModel.reuseViewClass);
   [tableView registerClass:viewClass forHeaderFooterViewReuseIdentifier:viewModel.reuseIdentifier];
   
-  id<LPDTableViewBindingProtocol> headerFooter =
+  id<LPDTableViewItemProtocol> headerFooter =
   [tableView dequeueReusableHeaderFooterViewWithIdentifier:viewModel.reuseIdentifier];
   if (!headerFooter) {
     headerFooter = [[viewClass alloc] initWithReuseIdentifier:viewModel.reuseIdentifier];

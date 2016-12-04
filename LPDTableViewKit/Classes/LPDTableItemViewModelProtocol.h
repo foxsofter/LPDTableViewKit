@@ -1,5 +1,5 @@
 //
-//  LPDTableBindingViewModelProtocol.h
+//  LPDTableItemViewModelProtocol.h
 //  LPDTableViewKit
 //
 //  Created by foxsofter on 16/1/8.
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol LPDTableViewModelProtocol;
 
-@protocol LPDTableBindingViewModelProtocol
+@protocol LPDTableItemViewModelProtocol
 
 @required
 

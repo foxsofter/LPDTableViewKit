@@ -6,9 +6,9 @@
 //  Copyright © 2016年 eleme. All rights reserved.
 //
 
-#import "LPDTableBindingViewModel.h"
+#import "LPDTableItemViewModel.h"
 
-@interface LPDTableCellViewModel : LPDTableBindingViewModel
+@interface LPDTableCellViewModel : LPDTableItemViewModel
 
 + (instancetype) new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

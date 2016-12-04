@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-#import "LPDTableBindingViewModelProtocol.h"
+#import "LPDTableItemViewModelProtocol.h"
 
 @protocol LPDTableSectionViewModelProtocol <NSObject>
 @required
 
-@property (nonatomic, copy) NSArray<__kindof id<LPDTableBindingViewModelProtocol>> *rows;
+@property (nonatomic, copy) NSArray<__kindof id<LPDTableItemViewModelProtocol>> *rows;
 
 @optional
 
 @property (nonatomic, copy) NSString *headerTitle;
 @property (nonatomic, copy) NSString *footerTitle;
 
-@property (nonatomic, strong) id<LPDTableBindingViewModelProtocol> headerViewModel;
-@property (nonatomic, strong) id<LPDTableBindingViewModelProtocol> footerViewModel;
+@property (nonatomic, strong) id<LPDTableItemViewModelProtocol> headerViewModel;
+@property (nonatomic, strong) id<LPDTableItemViewModelProtocol> footerViewModel;
 
 @end

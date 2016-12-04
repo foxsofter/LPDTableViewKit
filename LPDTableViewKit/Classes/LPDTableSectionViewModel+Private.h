@@ -8,10 +8,10 @@
 
 #import "LPDTableSectionViewModel.h"
 
-@protocol LPDTableBindingViewModelProtocol;
+@protocol LPDTableItemViewModelProtocol;
 
 @interface LPDTableSectionViewModel ()
 
-@property (nonatomic, strong) NSMutableArray<__kindof id<LPDTableBindingViewModelProtocol>> *mutableRows;
+@property (nonatomic, strong) NSMutableArray<__kindof id<LPDTableItemViewModelProtocol>> *mutableRows;
 
 @end

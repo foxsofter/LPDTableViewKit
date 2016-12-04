@@ -18,24 +18,24 @@
 
 @interface LPDTableViewFactory : NSObject
 
-- (__kindof id<LPDTableBindingViewModelProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
+- (__kindof id<LPDTableItemViewModelProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
                             cellForTableView:(UITableView *)tableView
                                  atIndexPath:(NSIndexPath *)indexPath;
 
-- (__kindof id<LPDTableBindingViewModelProtocol>)cellWithViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)viewModel
+- (__kindof id<LPDTableItemViewModelProtocol>)cellWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
                                       tableView:(UITableView *)tableView;
 
-- (__kindof id<LPDTableBindingViewModelProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
+- (__kindof id<LPDTableItemViewModelProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
                             headerForTableView:(UITableView *)tableView
                                      atSection:(NSInteger)sectionIndex;
 
-- (__kindof id<LPDTableBindingViewModelProtocol>)headerWithViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)viewModel
+- (__kindof id<LPDTableItemViewModelProtocol>)headerWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
                                           tableView:(UITableView *)tableView;
 
-- (__kindof id<LPDTableBindingViewModelProtocol>)tableViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)tableViewModel
+- (__kindof id<LPDTableItemViewModelProtocol>)tableViewModel:(__kindof id<LPDTableItemViewModelProtocol>)tableViewModel
                             footerForTableView:(UITableView *)tableView
                                      atSection:(NSInteger)sectionIndex;
 
-- (__kindof id<LPDTableBindingViewModelProtocol>)footerWithViewModel:(__kindof id<LPDTableBindingViewModelProtocol>)viewModel
+- (__kindof id<LPDTableItemViewModelProtocol>)footerWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
                                           tableView:(UITableView *)tableView;
 @end

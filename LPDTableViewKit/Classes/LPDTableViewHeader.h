@@ -6,10 +6,10 @@
 //  Copyright © 2016年 eleme. All rights reserved.
 //
 
-#import "LPDTableViewBindingProtocol.h"
+#import "LPDTableViewItemProtocol.h"
 #import <UIKit/UIKit.h>
 
-@interface LPDTableViewHeader : UITableViewHeaderFooterView <LPDTableViewBindingProtocol>
+@interface LPDTableViewHeader : UITableViewHeaderFooterView <LPDTableViewItemProtocol>
 + (instancetype) new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;

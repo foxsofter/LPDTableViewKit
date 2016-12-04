@@ -2,8 +2,8 @@
 #import <UIKit/UIKit.h>
 #endif
 
-#import "LPDTableBindingViewModel.h"
-#import "LPDTableBindingViewModelProtocol.h"
+#import "LPDTableItemViewModel.h"
+#import "LPDTableItemViewModelProtocol.h"
 #import "LPDTableCellViewModel.h"
 #import "LPDTableFooterViewModel.h"
 #import "LPDTableHeaderViewModel.h"
@@ -11,7 +11,7 @@
 #import "LPDTableSectionViewModel.h"
 #import "LPDTableSectionViewModelProtocol.h"
 #import "LPDTableView.h"
-#import "LPDTableViewBindingProtocol.h"
+#import "LPDTableViewItemProtocol.h"
 #import "LPDTableViewCell.h"
 #import "LPDTableViewFactory.h"
 #import "LPDTableViewFooter.h"
