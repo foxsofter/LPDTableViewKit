@@ -1,0 +1,28 @@
+PODS:
+  - Kiwi (2.4.0)
+  - LPDTableViewKit (0.1.0):
+    - ReactiveCocoa (= 2.5)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+
+DEPENDENCIES:
+  - Kiwi
+  - LPDTableViewKit (from `../`)
+
+EXTERNAL SOURCES:
+  LPDTableViewKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  LPDTableViewKit: 880020924117496391f21aed5f66dd556a9bc0d1
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+
+PODFILE CHECKSUM: cbcb1e66cd374b17ee4961d37be66a2bda51434b
+
+COCOAPODS: 1.1.1

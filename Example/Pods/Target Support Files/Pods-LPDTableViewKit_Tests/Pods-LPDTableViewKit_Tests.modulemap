@@ -1,0 +1,6 @@
+framework module Pods_LPDTableViewKit_Tests {
+  umbrella header "Pods-LPDTableViewKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
