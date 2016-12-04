@@ -84,10 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LPDAdditionsKit/LPDAdditionsKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LPDNetworkingKit/LPDNetworkingKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LPDTableViewKit/LPDTableViewKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYModel/YYModel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LPDAdditionsKit/LPDAdditionsKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LPDNetworkingKit/LPDNetworkingKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LPDTableViewKit/LPDTableViewKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYModel/YYModel.framework"
 fi

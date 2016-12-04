@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LPDTableViewModel : NSObject <LPDTableViewModelProtocol>
 
 + (instancetype) new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

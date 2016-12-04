@@ -2,7 +2,9 @@ use_frameworks!
 
 target 'LPDTableViewKit_Example' do
   pod 'LPDTableViewKit', :path => '../'
-
+  pod 'LPDNetworkingKit'
+  pod 'LPDAdditionsKit'
+  pod 'Masonry'
   target 'LPDTableViewKit_Tests' do
     inherit! :search_paths
 

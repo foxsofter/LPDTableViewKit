@@ -13,8 +13,6 @@
 #import "LPDTableViewModel+Private.h"
 #import "LPDTableSectionViewModel+Private.h"
 
-@class LPDTableViewModel;
-
 @interface LPDTableViewDelegate : NSObject <UITableViewDelegate>
 
 + (instancetype) new NS_UNAVAILABLE;
@@ -81,7 +79,7 @@
 static NSString *const kDefaultHeaderReuseIdentifier = @"kDefaultHeaderReuseIdentifier";
 static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIdentifier";
 
-@implementation LPDTableViewModel{
+@implementation LPDTableViewModel {
   id<UITableViewDelegate> _delegate;
   id<UITableViewDataSource> _dataSource;
 }
@@ -389,7 +387,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
       // send insertRowsAtIndexPathsSignal
       NSUInteger startIndex = index;
       NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray arrayWithCapacity:cellViewModels.count];
-      for (NSInteger i = startIndex; i < cellViewModels.count; i++) {
+      for (NSInteger i = startIndex; i < cellViewModels.count + startIndex; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
       }
       [self.insertRowsAtIndexPathsSubject sendNext:RACTuplePack(indexPaths, @(animation))];
@@ -483,11 +481,12 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   if (sectionIndex < self.sections.count) {
     LPDTableSectionViewModel *section = self.sections[sectionIndex];
     if (section.mutableRows.count > 0) {
+      NSUInteger index = section.mutableRows.count - 1;
       [section.mutableRows removeLastObject];
 
       // send deleteRowsAtIndexPathsSignal
       NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray arrayWithCapacity:1];
-      [indexPaths addObject:[NSIndexPath indexPathForRow:section.mutableRows.count - 1 inSection:sectionIndex]];
+      [indexPaths addObject:[NSIndexPath indexPathForRow:index inSection:sectionIndex]];
       [self.deleteRowsAtIndexPathsSubject sendNext:RACTuplePack(indexPaths, @(animation))];
     }
   }
@@ -541,7 +540,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
              withRowAnimation:(UITableViewRowAnimation)animation {
   EnsureOneSectionExists;
 
-  [self replaceCellViewModels:cellViewModels fromIndex:index inSection:self.sections.count - 1];
+  [self replaceCellViewModels:cellViewModels fromIndex:index inSection:self.sections.count - 1 withRowAnimation:animation];
 }
 
 - (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
@@ -586,17 +585,17 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   [section.mutableRows removeObjectsInRange:oldRange];
   NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(index, cellViewModels.count)];
   [section.mutableRows insertObjects:cellViewModels atIndexes:indexSet];
-  NSMutableArray<NSIndexPath *> *oldIndexPath = [NSMutableArray arrayWithCapacity:1];
-  for (NSInteger i = oldRange.location; i < oldRange.location + oldRange.length - 1; i++) {
-    [oldIndexPath addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
+  NSMutableArray<NSIndexPath *> *oldIndexPaths = [NSMutableArray arrayWithCapacity:1];
+  for (NSInteger i = oldRange.location; i < oldRange.location + oldRange.length; i++) {
+    [oldIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
   }
-  NSMutableArray<NSIndexPath *> *newIndexPath = [NSMutableArray arrayWithCapacity:1];
-  for (NSInteger i = index; i < index + cellViewModels.count - 1; i++) {
-    [newIndexPath addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
+  NSMutableArray<NSIndexPath *> *newIndexPaths = [NSMutableArray arrayWithCapacity:1];
+  for (NSInteger i = index; i < index + cellViewModels.count; i++) {
+    [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
   }
 
   // send replaceRowsAtIndexPathsSignal
-  [self.replaceRowsAtIndexPathsSubject sendNext:RACTuplePack(oldIndexPath, newIndexPath, @(animation))];
+  [self.replaceRowsAtIndexPathsSubject sendNext:RACTuplePack(oldIndexPaths, newIndexPaths, @(animation))];
 }
 
 - (void)addSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel {
@@ -1044,18 +1043,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     id<LPDTableViewItemProtocol> cell =
     [self.viewModel.tableViewFactory tableViewModel:self.viewModel cellForTableView:tableView atIndexPath:indexPath];
     cellViewModel = cell.viewModel;
-  }
-  
-  if (cellViewModel && [(NSObject *)cellViewModel respondsToSelector:@selector(height)]) {
-    return cellViewModel.height;
+    if (cellViewModel && [(NSObject *)cellViewModel respondsToSelector:@selector(height)] && cellViewModel.height > 0) {
+      return cellViewModel.height;
+    }
   }
 
-  return 1.f;
+  return UITableViewAutomaticDimension;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-//  return 1.f;
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
+  return 1.f;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   id<LPDTableSectionViewModelProtocol> sectionViewModel = self.viewModel.sections[section];
@@ -1067,9 +1065,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   return .1f;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section {
-//  return 1.f;
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section {
+  return 1.f;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
   id<LPDTableSectionViewModelProtocol> sectionViewModel = self.viewModel.sections[section];

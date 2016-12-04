@@ -24,7 +24,8 @@
   self.viewModel = viewModel;
 
   @weakify(self);
-  [[[self rac_signalForSelector:@selector(didMoveToSuperview)] takeUntil:[self rac_willDeallocSignal]]
+  RACSignal *viewDidLoadedSignal = [[self rac_signalForSelector:@selector(didMoveToSuperview)] merge:[self rac_signalForSelector:@selector(didMoveToWindow)]];
+  [[viewDidLoadedSignal takeUntil:[self rac_willDeallocSignal]]
    subscribeNext:^(id x) {
     @strongify(self);
 
@@ -67,7 +68,28 @@
         if (animation == UITableViewRowAnimationNone) {
           [self reloadData];
         } else {
-          [self reloadSections:tuple.first withRowAnimation:animation];
+          UITableViewRowAnimation animation = tuple.third;
+          if (animation == UITableViewRowAnimationNone) {
+            [self reloadData];
+          } else {
+            NSIndexSet *oldIndexSet = tuple.first;
+            NSIndexSet *newIndexSet = tuple.second;
+            UITableViewRowAnimation removeAnimation = animation;
+            if (animation == UITableViewRowAnimationRight) {
+              removeAnimation = UITableViewRowAnimationLeft;
+            } else if (animation == UITableViewRowAnimationLeft) {
+              removeAnimation = UITableViewRowAnimationRight;
+            } else if (animation == UITableViewRowAnimationTop) {
+              removeAnimation = UITableViewRowAnimationBottom;
+            } else if (animation == UITableViewRowAnimationBottom) {
+              removeAnimation = UITableViewRowAnimationTop;
+            }
+            
+            [self beginUpdates];
+            [self deleteSections:oldIndexSet withRowAnimation:removeAnimation];
+            [self insertSections:newIndexSet withRowAnimation:animation];
+            [self endUpdates];
+          }
         }
       }];
 
@@ -96,24 +118,13 @@
     [[[tableViewModel.deleteRowsAtIndexPathsSignal takeUntil:[self rac_signalForSelector:@selector(removeFromSuperview)]]
       deliverOnMainThread] subscribeNext:^(RACTuple *tuple) {
       @strongify(self);
-      NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray arrayWithArray:tuple.first];
-      for (NSInteger i = indexPaths.count - 1; i >= 0; i--) {
-        NSIndexPath *indexPath = [indexPaths objectAtIndex:i];
-        UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-        if (!cell) {
-          [indexPaths removeObjectAtIndex:i];
-        }
-      }
+      NSArray<NSIndexPath *> *indexPaths = tuple.first;
       if (indexPaths.count > 0) {
-        if ([[UIDevice currentDevice].systemVersion floatValue] < 8.0) {
+        UITableViewRowAnimation animation = [tuple.second integerValue];
+        if (animation == UITableViewRowAnimationNone) {
           [self reloadData];
         } else {
-          UITableViewRowAnimation animation = [tuple.second integerValue];
-          if (animation == UITableViewRowAnimationNone) {
-            [self reloadData];
-          } else {
-            [self deleteRowsAtIndexPaths:tuple.first withRowAnimation:animation];
-          }
+          [self deleteRowsAtIndexPaths:tuple.first withRowAnimation:animation];
         }
       }
     }];
@@ -132,7 +143,28 @@
     [[[tableViewModel.replaceRowsAtIndexPathsSignal takeUntil:[self rac_signalForSelector:@selector(removeFromSuperview)]]
      deliverOnMainThread] subscribeNext:^(RACTuple *tuple) {
       @strongify(self);
-      [self reloadData];
+      UITableViewRowAnimation animation = [tuple.third integerValue];
+      if (animation == UITableViewRowAnimationNone) {
+        [self reloadData];
+      } else {
+        NSArray *oldIndexPaths = tuple.first;
+        NSArray *newIndexPaths = tuple.second;
+        UITableViewRowAnimation removeAnimation = animation;
+        if (animation == UITableViewRowAnimationRight) {
+          removeAnimation = UITableViewRowAnimationLeft;
+        } else if (animation == UITableViewRowAnimationLeft) {
+          removeAnimation = UITableViewRowAnimationRight;
+        } else if (animation == UITableViewRowAnimationTop) {
+          removeAnimation = UITableViewRowAnimationBottom;
+        } else if (animation == UITableViewRowAnimationBottom) {
+          removeAnimation = UITableViewRowAnimationTop;
+        }
+        
+        [self beginUpdates];
+        [self deleteRowsAtIndexPaths:oldIndexPaths withRowAnimation:removeAnimation];
+        [self insertRowsAtIndexPaths:newIndexPaths withRowAnimation:animation];
+        [self endUpdates];
+      }
     }];
   }];
 }

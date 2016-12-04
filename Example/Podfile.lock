@@ -1,7 +1,28 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Kiwi (2.4.0)
+  - LPDAdditionsKit (0.1.1)
+  - LPDNetworkingKit (0.2.0):
+    - AFNetworking
+    - ReactiveCocoa (= 2.5)
+    - YYModel
   - LPDTableViewKit (0.1.0):
     - ReactiveCocoa (= 2.5)
+  - Masonry (1.0.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -9,20 +30,29 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - Kiwi
+  - LPDAdditionsKit
+  - LPDNetworkingKit
   - LPDTableViewKit (from `../`)
+  - Masonry
 
 EXTERNAL SOURCES:
   LPDTableViewKit:
     :path: "../"
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  LPDAdditionsKit: e029eefb9ec795bd4205a7f81e7678f654e9728f
+  LPDNetworkingKit: bc1364fc6abd60bfa250de9b13bf7d3372518995
   LPDTableViewKit: 880020924117496391f21aed5f66dd556a9bc0d1
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: cbcb1e66cd374b17ee4961d37be66a2bda51434b
+PODFILE CHECKSUM: dd0d2004d5681f7786a303b39c5a4824b3e4debc
 
 COCOAPODS: 1.1.1
