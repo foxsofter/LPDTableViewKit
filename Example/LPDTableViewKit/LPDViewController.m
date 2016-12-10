@@ -50,9 +50,6 @@
   UIBarButtonItem *replaceCellsBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"rpcs" style:UIBarButtonItemStylePlain target:self action:@selector(replaceCells)];
 
-  UIBarButtonItem *replaceCellBarButtonItem =
-  [[UIBarButtonItem alloc] initWithTitle:@"rpc" style:UIBarButtonItemStylePlain target:self action:@selector(rplaceCell)];
-
   self.navigationController.toolbarHidden = NO;
   [self setToolbarItems:@[addCellBarButtonItem,
                           addCellsBarButtonItem,
