@@ -289,6 +289,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = foxsofter;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = K5992V3NHR;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -558,6 +561,7 @@
 			baseConfigurationReference = C04072B624FFFB0BD8E1AE4C /* Pods-LPDTableViewKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K5992V3NHR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPDTableViewKit/LPDTableViewKit-Prefix.pch";
 				INFOPLIST_FILE = "LPDTableViewKit/LPDTableViewKit-Info.plist";
@@ -574,6 +578,7 @@
 			baseConfigurationReference = 68B5731D016DB9F4FD51F88E /* Pods-LPDTableViewKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K5992V3NHR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPDTableViewKit/LPDTableViewKit-Prefix.pch";
 				INFOPLIST_FILE = "LPDTableViewKit/LPDTableViewKit-Info.plist";
