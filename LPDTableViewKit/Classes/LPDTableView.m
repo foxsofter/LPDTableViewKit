@@ -25,7 +25,7 @@
 
   @weakify(self);
   RACSignal *viewDidLoadedSignal = [self rac_signalForSelector:@selector(didMoveToSuperview)];
-  [[viewDidLoadedSignal takeUntil:[self rac_willDeallocSignal]]
+  [[viewDidLoadedSignal takeUntil:[self rac_signalForSelector:@selector(removeFromSuperview)]]
    subscribeNext:^(id x) {
     @strongify(self);
 
