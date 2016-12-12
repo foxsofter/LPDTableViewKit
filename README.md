@@ -1,6 +1,6 @@
 # LPDTableViewKit
 
-[![CI Status](http://img.shields.io/travis/foxsofter/LPDTableViewKit.svg?style=flat)](https://travis-ci.org/foxsofter/LPDTableViewKit)
+[![CI Status](https://travis-ci.org/LPD-iOS/lpd-tableview-kit.svg?branch=master)](https://travis-ci.org/LPD-iOS/lpd-tableview-kit)
 [![Version](https://img.shields.io/cocoapods/v/LPDTableViewKit.svg?style=flat)](http://cocoapods.org/pods/LPDTableViewKit)
 [![License](https://img.shields.io/cocoapods/l/LPDTableViewKit.svg?style=flat)](http://cocoapods.org/pods/LPDTableViewKit)
 [![Platform](https://img.shields.io/cocoapods/p/LPDTableViewKit.svg?style=flat)](http://cocoapods.org/pods/LPDTableViewKit)
