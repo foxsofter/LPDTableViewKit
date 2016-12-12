@@ -24,7 +24,7 @@
   self.viewModel = viewModel;
 
   @weakify(self);
-  RACSignal *viewDidLoadedSignal = [[self rac_signalForSelector:@selector(didMoveToSuperview)] merge:[self rac_signalForSelector:@selector(didMoveToWindow)]];
+  RACSignal *viewDidLoadedSignal = [self rac_signalForSelector:@selector(didMoveToSuperview)];
   [[viewDidLoadedSignal takeUntil:[self rac_willDeallocSignal]]
    subscribeNext:^(id x) {
     @strongify(self);
