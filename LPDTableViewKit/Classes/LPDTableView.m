@@ -68,28 +68,22 @@
         if (animation == UITableViewRowAnimationNone) {
           [self reloadData];
         } else {
-          UITableViewRowAnimation animation = tuple.third;
-          if (animation == UITableViewRowAnimationNone) {
-            [self reloadData];
-          } else {
-            NSIndexSet *oldIndexSet = tuple.first;
-            NSIndexSet *newIndexSet = tuple.second;
-            UITableViewRowAnimation removeAnimation = animation;
-            if (animation == UITableViewRowAnimationRight) {
-              removeAnimation = UITableViewRowAnimationLeft;
-            } else if (animation == UITableViewRowAnimationLeft) {
-              removeAnimation = UITableViewRowAnimationRight;
-            } else if (animation == UITableViewRowAnimationTop) {
-              removeAnimation = UITableViewRowAnimationBottom;
-            } else if (animation == UITableViewRowAnimationBottom) {
-              removeAnimation = UITableViewRowAnimationTop;
-            }
-            
-            [self beginUpdates];
-            [self deleteSections:oldIndexSet withRowAnimation:removeAnimation];
-            [self insertSections:newIndexSet withRowAnimation:animation];
-            [self endUpdates];
+          NSIndexSet *indexSet = tuple.first;
+          UITableViewRowAnimation removeAnimation = animation;
+          if (animation == UITableViewRowAnimationRight) {
+            removeAnimation = UITableViewRowAnimationLeft;
+          } else if (animation == UITableViewRowAnimationLeft) {
+            removeAnimation = UITableViewRowAnimationRight;
+          } else if (animation == UITableViewRowAnimationTop) {
+            removeAnimation = UITableViewRowAnimationBottom;
+          } else if (animation == UITableViewRowAnimationBottom) {
+            removeAnimation = UITableViewRowAnimationTop;
           }
+          
+          [self beginUpdates];
+          [self deleteSections:indexSet withRowAnimation:removeAnimation];
+          [self insertSections:indexSet withRowAnimation:animation];
+          [self endUpdates];
         }
       }];
 

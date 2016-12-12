@@ -71,7 +71,7 @@
   model.body = @"GitBook allows you to organize your book into chapters, each chapter is stored in a separate file like this one.";
   LPDTablePostCellViewModel *cellViewModel = [[LPDTablePostCellViewModel alloc]initWithViewModel:self.tableViewModel];
   cellViewModel.model = model;
-  [self.tableViewModel addCellViewModel:cellViewModel withRowAnimation:UITableViewRowAnimationLeft];
+  [self.tableViewModel addCellViewModel:cellViewModel];
 }
 
 - (void)addCells {
