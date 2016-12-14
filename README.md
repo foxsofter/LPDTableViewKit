@@ -551,4 +551,4 @@ cell，header，footer的viewmodel中都有对应的height字段，需要根据v
       }];
 ```
 
-具体请下载[lpd-tableview-kit](https://github.com/LPD-iOS/lpd-tableview-kit)，看看其中的tableview相关的demo，当然目前只能在lpd-mvvm-kit这个框架下去用。
+具体请下载[lpd-tableview-kit](https://github.com/LPD-iOS/lpd-tableview-kit)，看看其中的demo。
