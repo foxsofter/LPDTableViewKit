@@ -7,13 +7,17 @@
 //
 
 #import "LPDAppDelegate.h"
+#import "LPDRootViewController.h"
 
 @implementation LPDAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    return YES;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  self.window.backgroundColor = [UIColor whiteColor];
+  self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LPDRootViewController alloc] initWithNibName:@"LPDRootViewController" bundle:nil]];
+  [self.window makeKeyAndVisible];
+
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

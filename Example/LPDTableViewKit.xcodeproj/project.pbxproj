@@ -13,19 +13,19 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* LPDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* LPDAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* LPDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* LPDViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		892CE1C07533D36D457ABFD0 /* Pods_LPDTableViewKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECE399BA5F777669CEEF10A /* Pods_LPDTableViewKit_Example.framework */; };
 		8E11DD421DF427A7003F60F6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11DD411DF427A7003F60F6 /* Launch Screen.storyboard */; };
 		8E11DD491DF434BD003F60F6 /* LPDPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E11DD451DF434BD003F60F6 /* LPDPostModel.m */; };
 		8E11DD4A1DF434BD003F60F6 /* LPDTableViewPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E11DD481DF434BD003F60F6 /* LPDTableViewPostCell.m */; };
 		8E11DD4E1DF435E3003F60F6 /* LPDTablePostCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E11DD4D1DF435E3003F60F6 /* LPDTablePostCellViewModel.m */; };
+		8EE10F1B1E0794F700702463 /* LPDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE10F191E0794F700702463 /* LPDRootViewController.m */; };
+		8EE10F1C1E0794F700702463 /* LPDRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE10F1A1E0794F700702463 /* LPDRootViewController.xib */; };
 		FB23917764C182FE3245D4AF /* Pods_LPDTableViewKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CA926FC77CB7255B4695B1 /* Pods_LPDTableViewKit_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +54,6 @@
 		6003F59B195388D20070C39A /* LPDTableViewKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LPDTableViewKit-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* LPDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPDAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* LPDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPDAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* LPDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPDViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* LPDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPDViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* LPDTableViewKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LPDTableViewKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -65,7 +63,6 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		625251ECB6C06AB281F16BF5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		68B5731D016DB9F4FD51F88E /* Pods-LPDTableViewKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPDTableViewKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPDTableViewKit_Example/Pods-LPDTableViewKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8E11DD411DF427A7003F60F6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8E11DD441DF434BD003F60F6 /* LPDPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDPostModel.h; sourceTree = "<group>"; };
 		8E11DD451DF434BD003F60F6 /* LPDPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDPostModel.m; sourceTree = "<group>"; };
@@ -73,6 +70,9 @@
 		8E11DD481DF434BD003F60F6 /* LPDTableViewPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDTableViewPostCell.m; sourceTree = "<group>"; };
 		8E11DD4C1DF435E3003F60F6 /* LPDTablePostCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDTablePostCellViewModel.h; sourceTree = "<group>"; };
 		8E11DD4D1DF435E3003F60F6 /* LPDTablePostCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDTablePostCellViewModel.m; sourceTree = "<group>"; };
+		8EE10F181E0794F700702463 /* LPDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDRootViewController.h; sourceTree = "<group>"; };
+		8EE10F191E0794F700702463 /* LPDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDRootViewController.m; sourceTree = "<group>"; };
+		8EE10F1A1E0794F700702463 /* LPDRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPDRootViewController.xib; sourceTree = "<group>"; };
 		C04072B624FFFB0BD8E1AE4C /* Pods-LPDTableViewKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPDTableViewKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPDTableViewKit_Example/Pods-LPDTableViewKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C5D1F19293395F61B0D5D1C3 /* Pods-LPDTableViewKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPDTableViewKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPDTableViewKit_Tests/Pods-LPDTableViewKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1CA926FC77CB7255B4695B1 /* Pods_LPDTableViewKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPDTableViewKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,14 +142,12 @@
 			isa = PBXGroup;
 			children = (
 				8E11DD431DF434BD003F60F6 /* Models */,
-				8E11DD4B1DF435E3003F60F6 /* ViewModels */,
 				8E11DD461DF434BD003F60F6 /* Views */,
+				8EE10F121E078D9500702463 /* ViewControllers */,
+				8E11DD4B1DF435E3003F60F6 /* ViewModels */,
 				6003F59C195388D20070C39A /* LPDAppDelegate.h */,
 				6003F59D195388D20070C39A /* LPDAppDelegate.m */,
-				6003F5A5195388D20070C39A /* LPDViewController.h */,
-				6003F5A6195388D20070C39A /* LPDViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				8E11DD411DF427A7003F60F6 /* Launch Screen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -222,6 +220,16 @@
 				8E11DD4D1DF435E3003F60F6 /* LPDTablePostCellViewModel.m */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8EE10F121E078D9500702463 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EE10F181E0794F700702463 /* LPDRootViewController.h */,
+				8EE10F191E0794F700702463 /* LPDRootViewController.m */,
+				8EE10F1A1E0794F700702463 /* LPDRootViewController.xib */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B9BBCACA298F1BAEEB77FAA3 /* Pods */ = {
@@ -321,7 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				8EE10F1C1E0794F700702463 /* LPDRootViewController.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8E11DD421DF427A7003F60F6 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
@@ -438,9 +446,9 @@
 			files = (
 				8E11DD491DF434BD003F60F6 /* LPDPostModel.m in Sources */,
 				6003F59E195388D20070C39A /* LPDAppDelegate.m in Sources */,
+				8EE10F1B1E0794F700702463 /* LPDRootViewController.m in Sources */,
 				8E11DD4E1DF435E3003F60F6 /* LPDTablePostCellViewModel.m in Sources */,
 				8E11DD4A1DF434BD003F60F6 /* LPDTableViewPostCell.m in Sources */,
-				6003F5A7195388D20070C39A /* LPDViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

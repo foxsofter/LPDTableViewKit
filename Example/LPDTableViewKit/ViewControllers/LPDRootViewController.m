@@ -1,5 +1,5 @@
 //
-//  LPDViewController.m
+//  LPDRootViewController.m
 //  LPDTableViewKit
 //
 //  Created by foxsofter on 12/04/2016.
@@ -7,12 +7,12 @@
 //
 
 #import <LPDTableViewKit/LPDTableViewKit.h>
-#import "LPDViewController.h"
+#import "LPDRootViewController.h"
 #import "LPDPostModel.h"
 #import "LPDTableViewPostCell.h"
 #import "LPDTablePostCellViewModel.h"
 
-@interface LPDViewController ()
+@interface LPDRootViewController ()
 
 @property (weak, nonatomic) IBOutlet LPDTableView *tableView;
 @property (nonatomic, strong) LPDTableViewModel *tableViewModel;
@@ -20,36 +20,35 @@
 
 @end
 
-@implementation LPDViewController
+@implementation LPDRootViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   
   self.tableViewModel = [[LPDTableViewModel alloc] init];
-  self.tableView.contentInset = UIEdgeInsetsMake(-100, 0, 0, 0);
   [self.tableView bindingTo:self.tableViewModel];
-
+  
   UIBarButtonItem *addCellBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"ac" style:UIBarButtonItemStylePlain target:self action:@selector(addCell)];
   
   UIBarButtonItem *addCellsBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"acs" style:UIBarButtonItemStylePlain target:self action:@selector(addCells)];
-
+  
   UIBarButtonItem *insertCellBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"ic" style:UIBarButtonItemStylePlain target:self action:@selector(insertCell)];
-
+  
   UIBarButtonItem *insertCellsBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"ics" style:UIBarButtonItemStylePlain target:self action:@selector(insertCells)];
-
+  
   UIBarButtonItem *removeCellBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"rc" style:UIBarButtonItemStylePlain target:self action:@selector(removeCell)];
-
+  
   UIBarButtonItem *removeCellsBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"rcs" style:UIBarButtonItemStylePlain target:self action:@selector(removeCells)];
   
   UIBarButtonItem *replaceCellsBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"rpcs" style:UIBarButtonItemStylePlain target:self action:@selector(replaceCells)];
-
+  
   self.navigationController.toolbarHidden = NO;
   [self setToolbarItems:@[addCellBarButtonItem,
                           addCellsBarButtonItem,
