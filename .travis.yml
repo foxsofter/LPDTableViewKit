@@ -10,5 +10,5 @@ language: objective-c
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install --project-directory=Example
 script:
-- xctool -workspace Example/LPDTableViewKit.xcworkspace -scheme LPDTableViewKit-Example -sdk iphonesimulator8
+- xctool -workspace Example/LPDTableViewKit.xcworkspace -scheme LPDTableViewKit-Example -sdk iphonesimulator9.3
 - pod lib lint --allow-warnings
