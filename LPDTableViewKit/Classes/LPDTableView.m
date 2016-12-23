@@ -20,6 +20,9 @@
 
 - (void)bindingTo:(__kindof id<LPDTableViewModelProtocol>)viewModel {
   NSParameterAssert(viewModel);
+  
+  self.sectionHeaderHeight = 0.1;
+  self.sectionFooterHeight = 0.1;
 
   self.viewModel = viewModel;
 
