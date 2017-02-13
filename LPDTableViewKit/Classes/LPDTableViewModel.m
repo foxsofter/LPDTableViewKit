@@ -1052,6 +1052,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+  if (self.viewModel.sections.count < 1) {
+    return .1f;
+  }
   id<LPDTableSectionViewModelProtocol> sectionViewModel = self.viewModel.sections[section];
   if ([sectionViewModel respondsToSelector:@selector(headerViewModel)]) {
     return sectionViewModel.headerViewModel.height;
@@ -1062,6 +1065,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+  if (self.viewModel.sections.count < 1) {
+    return .1f;
+  }
   id<LPDTableSectionViewModelProtocol> sectionViewModel = self.viewModel.sections[section];
   if ([sectionViewModel respondsToSelector:@selector(footerViewModel)]) {
     return sectionViewModel.footerViewModel.height;
