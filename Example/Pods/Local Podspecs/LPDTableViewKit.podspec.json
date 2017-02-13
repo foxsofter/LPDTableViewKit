@@ -1,7 +1,7 @@
 {
   "name": "LPDTableViewKit",
-  "version": "0.1.0",
-  "summary": "A short description of LPDTableViewKit.",
+  "version": "0.2.1",
+  "summary": "LPDTableViewKit, data driven tableview",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/LPD-iOS/lpd-tableview-kit",
   "license": {
@@ -13,15 +13,19 @@
   },
   "source": {
     "git": "https://github.com/LPD-iOS/lpd-tableview-kit.git",
-    "tag": "0.1.0"
+    "tag": "0.2.1"
   },
   "platforms": {
     "ios": "8.0"
   },
   "source_files": "LPDTableViewKit/Classes/**/*",
+  "private_header_files": [
+    "LPDTableViewKit/Classes/LPDTableSectionViewModel+Private.h",
+    "LPDTableViewKit/Classes/LPDTableViewModel+Private.h"
+  ],
   "dependencies": {
-    "ReactiveCocoa": [
-      "2.5"
+    "ReactiveObjC": [
+
     ]
   }
 }
