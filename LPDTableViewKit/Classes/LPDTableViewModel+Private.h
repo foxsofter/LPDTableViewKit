@@ -10,6 +10,7 @@
 
 @interface LPDTableViewModel ()
 
+@property (nullable, nonatomic, weak) id<UIScrollViewDelegate> scrollViewDelegate;
 @property (nonatomic, strong, readonly) id<UITableViewDelegate> delegate;
 @property (nonatomic, strong, readonly) id<UITableViewDataSource> dataSource;
 

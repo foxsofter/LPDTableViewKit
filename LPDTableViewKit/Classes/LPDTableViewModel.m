@@ -1116,42 +1116,55 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewDidZoom:scrollView];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewWillBeginDragging:scrollView];
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+  [self.viewModel.scrollViewDelegate scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+  [self.viewModel.scrollViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewWillBeginDecelerating:scrollView];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewDidEndDecelerating:scrollView];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewDidEndScrollingAnimation:scrollView];
 }
 
 - (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate viewForZoomingInScrollView:scrollView];
 }
 
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view {
+  [self.viewModel.scrollViewDelegate scrollViewWillBeginZooming:scrollView withView:view];
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale {
+  [self.viewModel.scrollViewDelegate scrollViewDidEndZooming:scrollView withView:view atScale:scale];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewShouldScrollToTop:scrollView];
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+  [self.viewModel.scrollViewDelegate scrollViewDidScrollToTop:scrollView];
 }
 
 @end

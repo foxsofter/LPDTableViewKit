@@ -164,55 +164,7 @@ static inline void replaceMethod(Class oldClass, Class newClass, SEL anSelector)
 }
 
 - (void)setDelegate:(id<UITableViewDelegate>)delegate {
-  LPDTableViewModel *tableViewModel = (LPDTableViewModel*)self.viewModel;
-  SEL anSelector = @selector(scrollViewDidScroll:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewDidZoom:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewWillBeginDragging:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewDidEndDragging:willDecelerate:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewWillBeginDecelerating:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewDidEndDecelerating:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewDidEndScrollingAnimation:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewWillBeginZooming:withView:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewDidEndZooming:withView:atScale:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewShouldScrollToTop:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
-  anSelector = @selector(scrollViewDidScrollToTop:);
-  if ([delegate respondsToSelector:anSelector]) {
-    replaceMethod(tableViewModel.delegate.class, delegate.class, anSelector);
-  }
+  [self.viewModel setScrollViewDelegate:delegate];
 }
 
 - (void)setDataSource:(id<UITableViewDataSource>)dataSource {
@@ -220,9 +172,3 @@ static inline void replaceMethod(Class oldClass, Class newClass, SEL anSelector)
 }
 
 @end
-
-static inline void replaceMethod(Class oldClass, Class newClass, SEL anSelector) {
-  Method keepMethod = class_getInstanceMethod(oldClass, anSelector);
-  Method toReplaceMethod = class_getInstanceMethod(newClass, anSelector);
-  method_exchangeImplementations(toReplaceMethod, keepMethod);
-}
