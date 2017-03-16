@@ -17,8 +17,6 @@
 
 @end
 
-static inline void replaceMethod(Class oldClass, Class newClass, SEL anSelector);
-
 @implementation LPDTableView
 
 - (void)bindingTo:(__kindof id<LPDTableViewModelProtocol>)viewModel {
