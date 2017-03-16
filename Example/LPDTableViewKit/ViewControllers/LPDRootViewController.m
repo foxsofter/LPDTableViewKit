@@ -12,11 +12,10 @@
 #import "LPDTableViewPostCell.h"
 #import "LPDTablePostCellViewModel.h"
 
-@interface LPDRootViewController ()
+@interface LPDRootViewController ()<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet LPDTableView *tableView;
 @property (nonatomic, strong) LPDTableViewModel *tableViewModel;
-
 
 @end
 
@@ -27,6 +26,7 @@
   
   self.tableViewModel = [[LPDTableViewModel alloc] init];
   [self.tableView bindingTo:self.tableViewModel];
+  self.tableView.delegate = self;
   
   UIBarButtonItem *addCellBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"ac" style:UIBarButtonItemStylePlain target:self action:@selector(addCell)];
@@ -160,6 +160,40 @@
   cellViewModel2.text = @"分为两份绝望";
   cellViewModel2.detail = @"分为来访将为浪费金额未来房价未来房价来我房间来我房间额外福利晚饭";
   [self.tableViewModel replaceCellViewModels:@[ cellViewModel1, cellViewModel2 ] fromIndex:0 withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  NSLog(@"scrollViewDidScroll");
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+  NSLog(@"scrollViewWillBeginDragging");
+
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+  
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+  
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+  
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+  
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+  
 }
 
 

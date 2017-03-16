@@ -1113,6 +1113,47 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   return nil;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+}
+
+- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view {
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale {
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+}
+
 @end
 
 @interface LPDTableViewDataSource ()
