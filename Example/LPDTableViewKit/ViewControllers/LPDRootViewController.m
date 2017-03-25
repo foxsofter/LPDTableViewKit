@@ -26,7 +26,7 @@
   
   self.tableViewModel = [[LPDTableViewModel alloc] init];
   [self.tableView bindingTo:self.tableViewModel];
-//  self.tableView.delegate = self;
+    //self.tableView.delegate = self;
   
   UIBarButtonItem *addCellBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"ac" style:UIBarButtonItemStylePlain target:self action:@selector(addCell)];
@@ -63,6 +63,9 @@
 #pragma mark - operations
 
 - (void)addCell {
+  LPDRootViewController *vc = [[LPDRootViewController alloc] initWithNibName:@"LPDRootViewController" bundle:nil];
+  [self.navigationController pushViewController:vc animated:YES];
+  
   LPDPostModel *model = [[LPDPostModel alloc]init];
   model.userId = 111111;
   model.identifier = 1003131;
@@ -143,6 +146,7 @@
 }
 
 - (void)removeCell {
+  [self.navigationController popViewControllerAnimated:YES];
   [self.tableViewModel removeLastCellViewModelWithRowAnimation:UITableViewRowAnimationRight];
 }
 
