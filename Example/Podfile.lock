@@ -21,7 +21,7 @@ PODS:
     - AFNetworking
     - ReactiveObjC
     - YYModel
-  - LPDTableViewKit (0.2.6):
+  - LPDTableViewKit (0.2.7):
     - ReactiveObjC
   - Masonry (1.0.2)
   - MLeaksFinder (0.2.1):
@@ -39,7 +39,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   LPDTableViewKit:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -47,7 +47,7 @@ SPEC CHECKSUMS:
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   LPDAdditionsKit: 68234d5791daf8d4272ccd4c06eaf22ab09b2809
   LPDNetworkingKit: afdec5c9ed7f410e5b3b4de9252b6c5c8f25fe07
-  LPDTableViewKit: e082367c33e2983ff7c0c74ae368a341912bd632
+  LPDTableViewKit: 9b716881d44a1928b4af81bede94f6fe126b94f1
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MLeaksFinder: 0850e2f2abc7227adc4d4e2d1992b431264eb4d5
   ReactiveObjC: 7b6782ae39f9ac0f57205c3b0c0b69b9dd7048c0
@@ -55,4 +55,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 209419d84225c3fc9a47b9df9df5c910558037a6
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
