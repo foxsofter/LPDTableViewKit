@@ -5,6 +5,8 @@ target 'LPDTableViewKit_Example' do
   pod 'LPDNetworkingKit'
   pod 'LPDAdditionsKit'
   pod 'Masonry'
+  pod 'MLeaksFinder'
+
   target 'LPDTableViewKit_Tests' do
     inherit! :search_paths
 
