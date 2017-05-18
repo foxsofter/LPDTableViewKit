@@ -8,6 +8,9 @@
 
 #import "LPDTableStandardCellViewModel.h"
 #import "LPDTableViewStandardCell.h"
+#import <Masonry/Masonry.h>
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <LPDAdditionsKit/UIScreen+LPDAccessor.h>
 
 @interface LPDTableViewStandardCell ()
 
@@ -32,13 +35,13 @@
   [self.contentView addSubview:_icon];
 
   _titleLabel = [[UILabel alloc] init];
-  _titleLabel.textColor = [UIColor primaryGrayTextColor];
+  _titleLabel.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
   _titleLabel.font = [UIFont systemFontOfSize:16];
   [self.contentView addSubview:_titleLabel];
 
   _contentLabel = [[UILabel alloc] init];
   _contentLabel.font = [UIFont systemFontOfSize:13];
-  _contentLabel.textColor = [UIColor secondaryGrayTextColor];
+  _contentLabel.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1.0];
   _contentLabel.textAlignment = NSTextAlignmentRight;
   [self.contentView addSubview:_contentLabel];
 
@@ -70,7 +73,7 @@
   RAC(self.contentLabel, hidden) =
     [[RACObserve(cellViewModel, contentShow) not] takeUntil:[self rac_prepareForReuseSignal]];
 
-  cellViewModel.height = UIScreen.height * 49.5f / 667;
+  cellViewModel.height = UIScreen.size.height * 49.5f / 667;
 }
 
 @end

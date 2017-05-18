@@ -21,7 +21,9 @@ PODS:
     - AFNetworking
     - ReactiveObjC
     - YYModel
-  - LPDTableViewKit (0.2.9):
+  - LPDTableViewKit (0.3.1):
+    - LPDAdditionsKit
+    - Masonry
     - ReactiveObjC
   - Masonry (1.0.2)
   - MLeaksFinder (0.2.1):
@@ -47,7 +49,7 @@ SPEC CHECKSUMS:
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   LPDAdditionsKit: ff2c582a2bdf7c3aca4e8ea491b32b8e8dde6114
   LPDNetworkingKit: afdec5c9ed7f410e5b3b4de9252b6c5c8f25fe07
-  LPDTableViewKit: 0dad9cc43e91c42996296c47a069bef022e5b8e2
+  LPDTableViewKit: 15a058f7c6b3a0e596c243307805773ff247ebec
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MLeaksFinder: 0850e2f2abc7227adc4d4e2d1992b431264eb4d5
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e

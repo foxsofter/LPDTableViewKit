@@ -6,6 +6,8 @@
 //  Copyright © 2016年 me.ele. All rights reserved.
 //
 
+#import "LPDTableViewCell.h"
+
 @interface LPDTableViewStandardCell : LPDTableViewCell
 
 @property (nonatomic, strong) UIImageView *icon;

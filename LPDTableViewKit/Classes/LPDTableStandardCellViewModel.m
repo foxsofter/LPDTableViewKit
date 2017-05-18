@@ -7,6 +7,7 @@
 //
 
 #import "LPDTableStandardCellViewModel.h"
+#import "LPDTableItemViewModelProtocol.h"
 
 @implementation LPDTableStandardCellViewModel
 

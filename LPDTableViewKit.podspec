@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LPDTableViewKit'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'LPDTableViewKit, data driven tableview'
 
 # This description is used to generate tags and improve search results.
@@ -40,4 +40,6 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'ReactiveObjC'
+  s.dependency 'Masonry'
+  s.dependency 'LPDAdditionsKit'
 end
