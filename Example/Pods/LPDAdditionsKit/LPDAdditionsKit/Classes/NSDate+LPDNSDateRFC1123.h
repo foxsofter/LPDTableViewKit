@@ -29,6 +29,11 @@
 - (NSString *)yyyyMMddString;
 
 /**
+ Convert NSDate into a string with FormatString
+ */
+- (NSString *)stringWithFormatString:(NSString *)formatString;
+
+/**
  *  @brief Convert to local time zone.
  */
 - (NSDate *)toLocalDate;

@@ -67,6 +67,17 @@
   return [df stringFromDate:self];
 }
 
+- (NSString *)stringWithFormatString:(NSString *)formatString {
+    static NSDateFormatter *df = nil;
+    if (df == nil) {
+        df = [[NSDateFormatter alloc] init];
+        //    df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+        df.timeZone = [NSTimeZone localTimeZone];
+        df.dateFormat = formatString;
+    }
+    return [df stringFromDate:self];
+}
+
 - (NSDate *)toLocalDate {
   NSInteger seconds = [[NSTimeZone defaultTimeZone] secondsFromGMTForDate:self];
   return [NSDate dateWithTimeInterval:seconds sinceDate:self];

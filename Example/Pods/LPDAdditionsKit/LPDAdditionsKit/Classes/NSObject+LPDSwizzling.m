@@ -54,5 +54,4 @@
   [NSObject classSwizzle:[self class] oldSelector:oldSelector newSelector:newSelector];
 }
 
-
 @end

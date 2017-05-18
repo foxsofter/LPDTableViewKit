@@ -48,6 +48,10 @@
   
   UIBarButtonItem *replaceCellsBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"rpcs" style:UIBarButtonItemStylePlain target:self action:@selector(replaceCells)];
+    
+    
+  UIBarButtonItem *printfCellsBarButtonItem =
+  [[UIBarButtonItem alloc] initWithTitle:@"printf" style:UIBarButtonItemStylePlain target:self action:@selector(printf)];
   
   self.navigationController.toolbarHidden = NO;
   [self setToolbarItems:@[addCellBarButtonItem,
@@ -56,7 +60,8 @@
                           insertCellsBarButtonItem,
                           removeCellBarButtonItem,
                           removeCellsBarButtonItem,
-                          replaceCellsBarButtonItem,]
+                          replaceCellsBarButtonItem,
+                          printfCellsBarButtonItem]
                animated:YES];
 }
 
@@ -164,6 +169,20 @@
   cellViewModel2.text = @"分为两份绝望";
   cellViewModel2.detail = @"分为来访将为浪费金额未来房价未来房价来我房间来我房间额外福利晚饭";
   [self.tableViewModel replaceCellViewModels:@[ cellViewModel1, cellViewModel2 ] fromIndex:0 withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (void)printf {
+    
+    NSLog(@"--------------%@-------------",self.tableViewModel.tableViewModelSections);
+    
+    NSArray *sections = self.tableViewModel.tableViewModelSections;
+    for (NSUInteger sectionIndex = 0; sectionIndex < [sections count]; sectionIndex++) {
+        NSArray *rows = [[sections objectAtIndex:sectionIndex] rows];
+        NSLog(@"############%@###########",rows);
+        for (NSUInteger rowIndex = 0; rowIndex < rows.count; rowIndex++) {
+            NSLog(@"***********%@*********",rows[rowIndex]);
+        }
+    }
 }
 
 #pragma mark - UIScrollViewDelegate

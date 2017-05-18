@@ -84,6 +84,10 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   id<UITableViewDataSource> _dataSource;
 }
 
+- (NSArray *)getSections {
+    return [NSArray arrayWithArray:_sections];
+}
+
 - (instancetype)init {
   if (self = [super init]) {
     _delegate = [[LPDTableViewDelegate alloc] initWithViewModel:self];
