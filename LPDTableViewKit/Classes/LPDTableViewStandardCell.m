@@ -73,7 +73,7 @@
   RAC(self.contentLabel, hidden) =
     [[RACObserve(cellViewModel, contentShow) not] takeUntil:[self rac_prepareForReuseSignal]];
 
-  cellViewModel.height = UIScreen.size.height * 49.5f / 667;
+  cellViewModel.height = 49.5f;
 }
 
 @end
