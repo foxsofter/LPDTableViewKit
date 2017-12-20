@@ -42,6 +42,7 @@
 @property (nonatomic, strong) LPDTableViewFactory *tableViewFactory;
 
 @property (nonatomic, strong) RACSubject *reloadDataSubject;
+@property (nonatomic, strong) RACSubject *scrollToRowAtIndexPathSubject;
 
 @property (nonatomic, strong) RACSubject *insertSectionsSubject;
 @property (nonatomic, strong) RACSubject *deleteSectionsSubject;
@@ -186,6 +187,27 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
     return sectionViewModel.footerViewModel;
   }
   return nil;
+}
+
+- (void)scrollToCellViewModelAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+    EnsureOneSectionExists;
+    BOOL isHave = NO;
+    for (NSUInteger section=0; section < self.sections.count; section++) {
+        LPDTableSectionViewModel *sectionViewModel = self.sections[section];
+        for (NSUInteger row=0; row < sectionViewModel.mutableRows.count; row++) {
+            NSIndexPath *indexPathItem = [NSIndexPath indexPathForRow:row inSection:section];
+            if (indexPathItem == indexPath) {
+                isHave = YES;
+            }
+        }
+    }
+    if (isHave) {
+        NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray arrayWithCapacity:1];
+        [indexPaths addObject:indexPath];
+        [self.scrollToRowAtIndexPathSubject sendNext:RACTuplePack(indexPaths, @(scrollPosition),@(animated))];
+    } else {
+        return;
+    }
 }
 
 - (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel {
@@ -820,6 +842,11 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 
 - (RACSignal *)reloadDataSignal {
   return _reloadDataSubject ?: (_reloadDataSubject = [[RACSubject subject] setNameWithFormat:@"reloadDataSignal"]);
+}
+
+- (RACSignal *)scrollToRowAtIndexPathSignal {
+    return _scrollToRowAtIndexPathSubject
+           ?: (_scrollToRowAtIndexPathSubject = [[RACSubject subject] setNameWithFormat:@"scrollToRowAtIndexPathSignal"]);
 }
 
 - (RACSignal *)insertSectionsSignal {
