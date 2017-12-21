@@ -33,9 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - scrollToRow methods
 
-- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
+//- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
-- (void)scrollToCellViewModelAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
+- (void)scrollToCellAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
+
+- (void)scrollToNearestSelectedCellAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
 #pragma mark - add cells methods
 

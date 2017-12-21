@@ -43,6 +43,7 @@
 
 @property (nonatomic, strong) RACSubject *reloadDataSubject;
 @property (nonatomic, strong) RACSubject *scrollToRowAtIndexPathSubject;
+@property (nonatomic, strong) RACSubject *scrollToNearestSelectedRowSubject;
 
 @property (nonatomic, strong) RACSubject *insertSectionsSubject;
 @property (nonatomic, strong) RACSubject *deleteSectionsSubject;
@@ -189,7 +190,7 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
   return nil;
 }
 
-- (void)scrollToCellViewModelAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+- (void)scrollToCellAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
     EnsureOneSectionExists;
     BOOL isHave = NO;
     for (NSUInteger section=0; section < self.sections.count; section++) {
@@ -202,12 +203,16 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
         }
     }
     if (isHave) {
-        NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray arrayWithCapacity:1];
-        [indexPaths addObject:indexPath];
-        [self.scrollToRowAtIndexPathSubject sendNext:RACTuplePack(indexPaths, @(scrollPosition),@(animated))];
+        [self.scrollToRowAtIndexPathSubject sendNext:RACTuplePack(indexPath, @(scrollPosition),@(animated))];
     } else {
+        NSLog(@"超过tableView indexPath范围！！");
         return;
     }
+}
+
+- (void)scrollToNearestSelectedCellAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+    EnsureOneSectionExists;
+    [self.scrollToNearestSelectedRowSubject sendNext:RACTuplePack(@(scrollPosition),@(animated))];
 }
 
 - (void)addCellViewModel:(__kindof id<LPDTableItemViewModelProtocol>)cellViewModel {
@@ -847,6 +852,11 @@ static NSString *const kDefaultFooterReuseIdentifier = @"kDefaultFooterReuseIden
 - (RACSignal *)scrollToRowAtIndexPathSignal {
     return _scrollToRowAtIndexPathSubject
            ?: (_scrollToRowAtIndexPathSubject = [[RACSubject subject] setNameWithFormat:@"scrollToRowAtIndexPathSignal"]);
+}
+
+- (RACSignal *)scrollToNearestSelectedRowSignal {
+    return _scrollToNearestSelectedRowSubject
+    ?: (_scrollToNearestSelectedRowSubject = [[RACSubject subject] setNameWithFormat:@"scrollToNearestSelectedRowSignal"]);
 }
 
 - (RACSignal *)insertSectionsSignal {

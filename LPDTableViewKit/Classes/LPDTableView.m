@@ -43,6 +43,12 @@
         @strongify(self);
         [self scrollToRowAtIndexPath:tuple.first atScrollPosition:[tuple.second integerValue] animated:[tuple.third boolValue]];
     }];
+
+    [[[tableViewModel.scrollToNearestSelectedRowSignal takeUntil:[self rac_signalForSelector:@selector(removeFromSuperview)]]
+      deliverOnMainThread] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        [self scrollToNearestSelectedRowAtScrollPosition:[tuple.first integerValue] animated:[tuple.second boolValue]];
+    }];
     
     [[[tableViewModel.insertSectionsSignal takeUntil:[self rac_signalForSelector:@selector(removeFromSuperview)]]
       deliverOnMainThread] subscribeNext:^(RACTuple *tuple) {
