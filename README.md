@@ -5,37 +5,43 @@
 [![License](https://img.shields.io/cocoapods/l/LPDTableViewKit.svg?style=flat)](http://cocoapods.org/pods/LPDTableViewKit)
 [![Platform](https://img.shields.io/cocoapods/p/LPDTableViewKit.svg?style=flat)](http://cocoapods.org/pods/LPDTableViewKit)
 
-## Example
+## 需求
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+- Xcode 9.0+；
+- 了解 ReactiveCocoa（可以参阅 [图解ReactiveCocoa基本函数](http://www.jianshu.com/p/38d39923ee81)）。
 
-## Requirements
+## 示例
 
-对ReactiveCocoa足够了解，也可以参阅[图解ReactiveCocoa基本函数](http://www.jianshu.com/p/38d39923ee81)
+1. 利用 `git clone` 命令下载本仓库, `Examples` 目录包含了所有的示例程序；
+2. 用 XCode 打开对应项目编译即可。
 
-## Installation
+或执行以下命令：
 
-LPDTableViewKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+```bash
+git clone git@github.com:LPD-iOS/LPDTableViewKit.git; cd LPDTableViewKit/Example; open 'LPDTableViewKit.xcworkspace'
+```
+
+## 安装
+
+LPDTableViewKit 可以通过 [CocoaPods](http://cocoapods.org) 进行获取。只需要在你的 Podfile 中添加如下代码就能实现引入：
 
 ```ruby
 pod "LPDTableViewKit"
 ```
 
-## Author
+然后，执行如下命令即可：
 
-foxsofter, foxsofter@gmail.com
+```bash
+$ pod install
+```
 
-## License
+## 简介
 
-LPDTableViewKit is available under the MIT license. See the LICENSE file for more info.
+**Cocoa Touch Framework** 无疑是一个很好的框架，特别是对动画的支持，在我接触过的框架中可能是最好的（当然我接触的框架可能比较少），但是就UITableView 来说确实存在很多吐槽点，从我个人理解的角度做些分析，尝试去解决这些吐槽点，并给到的解决方案。
 
-##UITableView改造之路
+### UITableView 枚举滥用
 
-**Cocoa Touch Framework**无疑是一个很好的框架，特别是对动画的支持，在我接触过的框架中可能是最好的（当然我接触的框架可能比较少），但是就UITableView来说确实存在很多吐槽点，从我个人理解的角度做些分析，尝试去解决这些吐槽点，并给到的解决方案。
-## UITableView枚举滥用
-
-枚举从来都是为了可扩展而存在的，UITableView中对UITableViewStyle的使用堪称滥用，先看看这个枚举的定义，枚举项的命名不够直观，源码的注释也得不到有效信息，
+枚举从来都是为了可扩展而存在的，UITableView 中对 UITableViewStyle 的使用堪称滥用，先看看这个枚举的定义，枚举项的命名不够直观，源码的注释也得不到有效信息：
 
 ```objective-c
 typedef NS_ENUM(NSInteger, UITableViewStyle) {
@@ -44,7 +50,7 @@ typedef NS_ENUM(NSInteger, UITableViewStyle) {
 };
 ```
 
-再看看如下文档的说明，基本明确了设计者的本意，UITableViewStyle想要区分的是页眉或页脚（section headers or footers）是否浮动，接下来做个剖析：
+再看看如下文档的说明，基本明确了设计者的本意，UITableViewStyle 想要区分的是页眉或页脚（section headers or footers）是否浮动，接下来做个剖析：
 
 ```
 case plain
@@ -53,24 +59,24 @@ case grouped
 A table view whose sections present distinct groups of rows. The section headers and footers do not float.
 ```
 
-UITableView的初始化函数
+UITableView 的初始化函数
 
 ```objective-c
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style; // must specify style at creation. -initWithFrame: calls this with UITableViewStylePlain
 ```
 
-- UITableViewStyle作为初始化函数的参数的不合理性，大多数的UIView及其子类都是一样风格的初始化函数，到了UITableView这里就显得有点另类，设计者将 UITableViewStyle放到初始化函数中作为参数，无非就是不希望style在UITableView初始化之后被改变，可能原因是UITableView滑动的过程中style被改变了，不管之前是否存在浮动的页眉或页脚，改变之后对UI的呈现可能是比较突兀的，另外这种变更可能并没有实际意义；
+- UITableViewStyle 作为初始化函数的参数的不合理性，大多数的UIView及其子类都是一样风格的初始化函数，到了UITableView这里就显得有点另类，设计者将 UITableViewStyle放到初始化函数中作为参数，无非就是不希望style在UITableView初始化之后被改变，可能原因是UITableView滑动的过程中style被改变了，不管之前是否存在浮动的页眉或页脚，改变之后对UI的呈现可能是比较突兀的，另外这种变更可能并没有实际意义；
 - UITableViewStyle的存在不合理，当一个枚举只存在两个选项时，很多时候会考虑使用BOOL来表示，可读性也不差，比如这里用isSectionGrouped，可能时不需要看注视或者文档就可以理解了；
 - UITableViewStylePlain的命名不合理，我们知道UITableView总是会分section，
   Plain从其语义和StoryBoard默认值的显示可以联想UITableViewStylePlain可能是想表示只有一个section的情况，那么所谓的页眉或页脚是否浮动其实就没有太大意义，如果页眉或页脚不需要浮动其实就是一个Cell了，因为最终效果都是一样的，反过来假设需要多个section，但是页眉或页脚都不需要浮动，那么这些页眉或页脚其实用Cell来表示是不是更好呢！
 
 综上得出结论：UITableViewStyle是不该用。
 
-## UITableViewCell枚举乱用
+### UITableViewCell枚举乱用
 
 UITableViewCell存在好几个枚举的乱用，乱用表示不该用的时候用了。
 
-### UITableViewCellStyle的乱用
+#### UITableViewCellStyle的乱用
 
 ```objective-c
 typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
@@ -92,7 +98,7 @@ UITableViewCell的初始化方法中同样也带上了UITableViewCellStyle，先
 
 再看看UITableViewCellStyle的各个枚举项的命名，简直是残暴啊，UITableViewCellStyleValue1，UITableViewCellStyleValue2这些是什么鬼哦，再看看注释，分别说明Used in Settings和Used in Phone/Contacts，这就很明显了，这些实现完全就是系统组件用到了这样的实现，然后直接做为api开放出来的，并没有做很好的抽象，在初始化函数中加入UITableViewCellStyle，污染了初始化函数，限制了扩展，每每在写一个UITableViewCell的子类时，总是有一种莫名的哀伤，UITableViewCellStyle做为参数存在唯一的作用就是多写了点代码，然后没有任何意义。这些cell style所表示的cell完全应该通过子类化来实现的，所以UITableViewCellStyle的乱用是有点惨不忍睹的。
 
-### UITableViewCellSeparatorStyle的乱用
+#### UITableViewCellSeparatorStyle的乱用
 
 ```objective-c
 typedef NS_ENUM(NSInteger, UITableViewCellSeparatorStyle) {
@@ -106,7 +112,7 @@ typedef NS_ENUM(NSInteger, UITableViewCellSeparatorStyle) {
 
 当一个枚举各项的命名过于诡异时，这个枚举的存在实际上是要好好考虑下的，所以UITableViewCellSeparatorStyle也是典型的乱用。
 
-### UITableViewCell对以下枚举的使用也是有待商榷的
+#### UITableViewCell对以下枚举的使用也是有待商榷的
 
 ```objective-c
 typedef NS_ENUM(NSInteger, UITableViewCellSelectionStyle) {
@@ -128,11 +134,11 @@ typedef NS_ENUM(NSInteger, UITableViewCellFocusStyle) {
 
 UITableViewCellFocusStyle这个枚举的存在难道仅仅是为了无病呻吟吗？
 
-## UITableView委托乱用
+### UITableView委托乱用
 
 UITableViewDelegate，UITableViewDataSource，包括刚引入的UITableViewDataSourcePrefetching，这几个delegate的设计好像是缺少了些设计，更像是为了解决问题而写代码，作为一个基础框架，实在是不可取的。
 
-### UITableViewDelegate设计之重
+#### UITableViewDelegate设计之重
 
 ```objective-c
 // Display customization
@@ -167,7 +173,7 @@ UIReusableView存在UIReusableViewDelegate的一个delegate，前面所提到的
 
 综上，UITableViewDelegate实际上是太重了。
 
-### UITableViewDelegate职责之乱
+#### UITableViewDelegate职责之乱
 
 下面这些委托函数，实际上应该存在UITableViewDataSource中。页眉、页脚的数据源跟cell的数据源应该是平等的存在，不应该是说不常用了，我就放到UITableViewDelegate中，本来就应该放在UITableViewDataSource，不必须用的可以optional修饰下也还说得过去。
 
@@ -190,7 +196,7 @@ UIReusableView存在UIReusableViewDelegate的一个delegate，前面所提到的
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;   // custom view for footer. will be adjusted to default or specified footer height
 ```
 
-### UITableViewDataSource设计之重
+#### UITableViewDataSource设计之重
 
 经过前面的梳理，那么UITableViewDataSource中应该包括以下这些函数
 
@@ -241,23 +247,23 @@ typedef NS_ENUM(NSInteger, UIReusableViewType) {
 
 至于UITableViewDataSourcePrefetching就不应该出现，为了优化滚动帧率，拆东墙补西墙之举。从开发者的角度，最简单的做法就是把整个的数据源给到，剩下的就应该是UITableView自身去实现了，数据都有了，想要什么预加载都是框架自身的事情了，减少对开发者的依赖，更是减少api的耦合度，对外暴露的接口越多越不好。
 
-## 改造之路在何方？
+### 改造之路在何方？
 
 前面在吐槽的时候，每每会给出自认为更合理的设计，然而并没有什么卵用，既有代码是无法修改的，那改造之路又在何方呢？不能改变既有代码，那么只能是将这么东西尽可能的封装起来，Objective-C语言还提供了一个蛮有意思的编译期常量**NS_UNAVAILABLE**，可以在编译期禁用父类的方法，算是不完美中的完全吧，我们可以禁用掉一些不合理的类成员，来达到一个比较好的封装效果。
 
-### UITableView枚举滥用的解决
+#### UITableView枚举滥用的解决
 
 UITableView可以禁用被枚举污染的初始化函数，重写默认的initWithFrame初始化函数并默认设style为UITableViewStyleGrouped，参考类 [LPDTableView](https://github.com/LPD-iOS/lpd-tableview-kit/blob/master/LPDTableViewKit/Classes/LPDTableView.h)暂时并没有重写初始化函数，目前认为无伤大雅。
 
-### UITableViewCell枚举乱用的解决
+#### UITableViewCell枚举乱用的解决
 
 UITableViewCell无法禁用被枚举污染的初始化函数，因为重用时会调用到，参考类 [LPDTableViewCell](https://github.com/LPD-iOS/lpd-tableview-kit/blob/master/LPDTableViewKit/Classes/LPDTableViewCell.h)，选择无视UITableViewCellStyle，并将已存在的几种cellStyle都扩展成对应的子类，LPDTableViewDefaultCell，LPDTableViewValue1Cell，LPDTableViewValue2Cell，LPDTableViewSubtitleCell命名还是保留一致，毕竟大家都已经习惯了这种丑。
 
-### UITableView委托乱用的解决
+#### UITableView委托乱用的解决
 
 既然无法改造既有的UITableView，可以从另外一个侧面来解决。
 
-#### UITableView如何数据驱动
+##### UITableView如何数据驱动
 
 引入MVVM的思想，为UITableView添加对应的ViewModel，有了ViewModel，则可以引入数据驱动的方式，当我们需要为Cell、页眉、页脚提供DataSource时，只需要调用[LPDTableViewModelProtocl](https://github.com/LPD-iOS/lpd-tableview-kit/blob/master/LPDTableViewKit/Classes/LPDTableViewModelProtocol.h)中的方法就好了，接口的粒度已经比较细了，但可能不是最合理的组合，相关的函数都在下面：
 
@@ -434,7 +440,7 @@ UITableViewCell无法禁用被枚举污染的初始化函数，因为重用时�
                         withRowAnimation:(UITableViewRowAnimation)animation;
 ```
 
-#### UITableView委托转RACSignal
+##### UITableView委托转RACSignal
 
 引入ReactiveCocoa中的RACSignal，将UITableViewDelegate中的委函数都转成信号，当我们需要实现某一个委托函数，只需要订阅对应的RACSignal即可，不订阅没有任何副作用。
 
@@ -453,21 +459,21 @@ UITableViewCell无法禁用被枚举污染的初始化函数，因为重用时�
 @property (nonatomic, strong, readonly) RACSignal *didEndEditingRowAtIndexPathSignal;
 ```
 
-#### Cell、页眉、页脚也存在相应的ViewModel
+##### Cell、页眉、页脚也存在相应的ViewModel
 
 Cell、页眉、页脚跟其ViewModel之间需要遵守约定好的命名规则，如此会自动匹配。另外Cell、页眉、页脚默认都是重用的，同一类型reuseIdentifier一样，重用相关的函数就都在 [LPDTableViewFactory](https://github.com/LPD-iOS/lpd-tableview-kit/blob/master/LPDTableViewKit/Classes/LPDTableViewFactory.h)。这个类中了当我们关心DataSource或者Delegate时，我们只需要跟对应的ViewModel交互即可，将Cell、页眉、页脚解耦合。
 
-#### LPDTableSectionViewModelProtocol
+##### LPDTableSectionViewModelProtocol
 
 这个protocol的实现类LPDTableSectionViewModel，只是在ViewModel层抽象出来，这样才好完善ViewModel层的实现，并不存在对应的SectionView。
 
-#### 关于height
+##### 关于height
 
 cell，header，footer的viewmodel中都有对应的height字段，需要根据viewmodel的model字段在bindingTo:viewModel函数中设置height值，可以针对model做height的缓存。
 
-## 改造之后的例子
+### 改造之后的例子
 
-### 加载tableview的数据
+#### 加载tableview的数据
 
 ```Objective-c
 -(void)reloadTable {
@@ -485,7 +491,7 @@ cell，header，footer的viewmodel中都有对应的height字段，需要根据v
 }
 ```
 
-### 添加一个cell
+#### 添加一个cell
 
 ```Objective-c
         LPDPostModel *model = [[LPDPostModel alloc]init];
@@ -498,7 +504,7 @@ cell，header，footer的viewmodel中都有对应的height字段，需要根据v
         [self.tableViewModel insertCellViewModel:cellViewModel atIndex:0 withRowAnimation:UITableViewRowAnimationLeft];
 ```
 
-### 批量添加cell
+#### 批量添加cell
 
 ```Objective-c
         NSMutableArray *cellViewModels = [NSMutableArray array];
@@ -529,13 +535,13 @@ cell，header，footer的viewmodel中都有对应的height字段，需要根据v
         [self.tableViewModel insertCellViewModels:cellViewModels atIndex:0 withRowAnimation:UITableViewRowAnimationLeft];
 ```
 
-### 删除一个cell
+#### 删除一个cell
 
 ```Objective-c
         [self.tableViewModel removeCellViewModelAtIndex:0 withRowAnimation:UITableViewRowAnimationRight];
 ```
 
-### Cell的didSelectRowAtIndexPathSignal
+#### Cell的didSelectRowAtIndexPathSignal
 
 ```Objective-c
       [[[self.waybillsTableViewModel.didSelectRowAtIndexPathSignal deliverOnMainThread]
@@ -552,3 +558,15 @@ cell，header，footer的viewmodel中都有对应的height字段，需要根据v
 ```
 
 具体请下载[lpd-tableview-kit](https://github.com/LPD-iOS/lpd-tableview-kit)，看看其中的demo。
+
+## 作者
+
+foxsofter, foxsofter@gmail.com
+
+## 协议
+
+<a href="https://github.com/EyreFree/EFQRCode/blob/master/LICENSE">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png">
+</a>
+
+EFQRCode 基于 MIT 协议进行分发和使用，更多信息参见协议文件。
