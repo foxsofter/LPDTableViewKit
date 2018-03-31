@@ -41,7 +41,7 @@ $ pod install
 
 ### UITableView 枚举滥用
 
-枚举从来都是为了可扩展而存在的，UITableView 中对 UITableViewStyle 的使用堪称滥用，先看看这个枚举的定义，枚举项的命名不够直观，源码的注释也得不到有效信息：
+枚举从来都不是为了可扩展而存在的，UITableView 中对 UITableViewStyle 的使用堪称滥用，先看看这个枚举的定义，枚举项的命名不够直观，源码的注释也得不到有效信息：
 
 ```objective-c
 typedef NS_ENUM(NSInteger, UITableViewStyle) {
