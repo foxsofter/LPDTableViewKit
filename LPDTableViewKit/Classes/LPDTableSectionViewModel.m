@@ -11,28 +11,32 @@
 
 @implementation LPDTableSectionViewModel
 
-+ (instancetype)section {
-  return [[self alloc] init];
++ (instancetype)section
+{
+    return [[self alloc] init];
 }
 
-- (NSMutableArray<__kindof id<LPDTableItemViewModelProtocol>> *)mutableRows {
-  return _mutableRows ?: (_mutableRows = [NSMutableArray array]);
+- (NSMutableArray<__kindof id<LPDTableItemViewModelProtocol> > *)mutableRows
+{
+    return _mutableRows ? : (_mutableRows = [NSMutableArray array]);
 }
 
-- (NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)rows {
-  return [_mutableRows copy];
+- (NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)rows
+{
+    return [_mutableRows copy];
 }
 
-- (void)setRows:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)rows {
-  if (rows) {
-    if ([rows isKindOfClass:[NSMutableArray class]]) {
-      _mutableRows = (NSMutableArray *)rows;
+- (void)setRows:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)rows
+{
+    if (rows) {
+        if ([rows isKindOfClass:[NSMutableArray class]]) {
+            _mutableRows = (NSMutableArray *)rows;
+        } else {
+            _mutableRows = [rows mutableCopy];
+        }
     } else {
-      _mutableRows = [rows mutableCopy];
+        _mutableRows = [NSMutableArray array];
     }
-  } else {
-    _mutableRows = [NSMutableArray array];
-  }
 }
 
 @end

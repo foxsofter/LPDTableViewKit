@@ -10,7 +10,7 @@
 
 @interface LPDTableCellViewModel : LPDTableItemViewModel
 
-+ (instancetype) new NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
 @property (nonatomic, strong) UIImage *image;
@@ -21,7 +21,7 @@
 
 @property (nonatomic) UITableViewCellAccessoryType accessoryType;
 
-@property (nonatomic) UITableViewCellSelectionStyle   selectionStyle;
+@property (nonatomic) UITableViewCellSelectionStyle selectionStyle;
 
 @property (nonatomic, strong) NSMutableAttributedString *attributedText;
 

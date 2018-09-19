@@ -10,6 +10,6 @@
 #import "LPDTableItemViewModelProtocol.h"
 
 @interface LPDTableItemViewModel : NSObject <LPDTableItemViewModelProtocol>
-+ (instancetype) new NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 @end

@@ -16,9 +16,10 @@
 
 @implementation LPDTableViewHeader
 
-- (void)bindingTo:(__kindof id<LPDTableItemViewModelProtocol>)viewModel {
-  NSParameterAssert(viewModel);
-  self.viewModel = viewModel;
+- (void)bindingTo:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
+{
+    NSParameterAssert(viewModel);
+    self.viewModel = viewModel;
 }
 
 @end

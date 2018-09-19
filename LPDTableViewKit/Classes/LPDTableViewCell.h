@@ -21,7 +21,7 @@
  *  @brief base class of all table view cell
  */
 @interface LPDTableViewCell : UITableViewCell <LPDTableViewItemProtocol>
-+ (instancetype) new NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;

@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  */
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels;
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels;
 
 /**
  *  @brief 添加cellViewModel到最后一个section，如果不存在section默认添加一个section
@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  *  @param animation      animation
  */
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
          withRowAnimation:(UITableViewRowAnimation)animation;
 
 /**
@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  *  @param sectionIndex   sectionIndex
  */
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                 toSection:(NSUInteger)sectionIndex;
 
 /**
@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param sectionIndex   sectionIndex
  *  @param animation      animation
  */
-- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)addCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                 toSection:(NSUInteger)sectionIndex
          withRowAnimation:(UITableViewRowAnimation)animation;
 
@@ -161,7 +161,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  *  @param index          index
  */
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                      atIndex:(NSUInteger)index;
 
 /**
@@ -171,7 +171,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index          index
  *  @param animation      animation
  */
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                      atIndex:(NSUInteger)index
             withRowAnimation:(UITableViewRowAnimation)animation;
 
@@ -182,7 +182,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index          index
  *  @param sectionIndex   sectionIndex
  */
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                      atIndex:(NSUInteger)index
                    inSection:(NSUInteger)sectionIndex;
 
@@ -205,7 +205,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param sectionIndex   sectionIndex
  *  @param animation      animation
  */
-- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)insertCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                      atIndex:(NSUInteger)index
                    inSection:(NSUInteger)sectionIndex
             withRowAnimation:(UITableViewRowAnimation)animation;
@@ -303,7 +303,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  *  @param index          index
  */
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                     fromIndex:(NSUInteger)index;
 
 /**
@@ -313,7 +313,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index          index
  *  @param animation      animation
  */
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                     fromIndex:(NSUInteger)index
              withRowAnimation:(UITableViewRowAnimation)animation;
 
@@ -324,7 +324,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index          index
  *  @param sectionIndex   sectionIndex
  */
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                     fromIndex:(NSUInteger)index
                     inSection:(NSUInteger)sectionIndex;
 
@@ -336,7 +336,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param sectionIndex   sectionIndex
  *  @param animation      animation
  */
-- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                     fromIndex:(NSUInteger)index
                     inSection:(NSUInteger)sectionIndex
              withRowAnimation:(UITableViewRowAnimation)animation;
@@ -366,7 +366,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels   同一个cellViewModel不可添加多次
  */
 - (void)addSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-         withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels;
+         withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels;
 
 /**
  *  @brief 添加sectionViewModel
@@ -376,7 +376,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param animation        animation
  */
 - (void)addSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-         withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+         withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
            withRowAnimation:(UITableViewRowAnimation)animation;
 
 #pragma mark - insert section methods
@@ -408,7 +408,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index            index
  */
 - (void)insertSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-            withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+            withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                        atIndex:(NSUInteger)index;
 
 /**
@@ -420,7 +420,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param animation        animation
  */
 - (void)insertSectionViewModel:(id<LPDTableSectionViewModelProtocol>)sectionViewModel
-            withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+            withCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                        atIndex:(NSUInteger)index
               withRowAnimation:(UITableViewRowAnimation)animation;
 
@@ -496,7 +496,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  */
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels;
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels;
 
 /**
  *  @brief 重置最后的section，替换该section下所有的cellViewModel
@@ -504,7 +504,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  *  @param animation      animation
  */
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                         withRowAnimation:(UITableViewRowAnimation)animation;
 
 /**
@@ -513,7 +513,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cellViewModels 同一个cellViewModel不可添加多次
  *  @param sectionIndex   sectionIndex
  */
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                                atSection:(NSUInteger)sectionIndex;
 
 /**
@@ -523,10 +523,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param sectionIndex   sectionIndex
  *  @param animation      animation
  */
-- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol>> *)cellViewModels
+- (void)replaceSectionWithCellViewModels:(NSArray<__kindof id<LPDTableItemViewModelProtocol> > *)cellViewModels
                                atSection:(NSUInteger)sectionIndex
                         withRowAnimation:(UITableViewRowAnimation)animation;
-
 
 #pragma mark - action signals
 

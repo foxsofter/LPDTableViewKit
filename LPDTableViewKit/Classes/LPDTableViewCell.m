@@ -18,27 +18,28 @@
 
 @implementation LPDTableViewCell
 
-- (void)bindingTo:(__kindof id<LPDTableItemViewModelProtocol>)viewModel {
-  NSParameterAssert(viewModel);
+- (void)bindingTo:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
+{
+    NSParameterAssert(viewModel);
 
-  self.viewModel = viewModel;
-  LPDTableCellViewModel *cellViewModel = viewModel;
-  self.textLabel.text = cellViewModel.text;
-  self.detailTextLabel.text = cellViewModel.detail;
-  self.imageView.image = cellViewModel.image;
-  self.accessoryType = cellViewModel.accessoryType;
-  self.selectionStyle = cellViewModel.selectionStyle;
-  if (cellViewModel.attributedText) {
-    self.textLabel.attributedText = cellViewModel.attributedText;
-  }
+    self.viewModel = viewModel;
+    LPDTableCellViewModel *cellViewModel = viewModel;
+    self.textLabel.text = cellViewModel.text;
+    self.detailTextLabel.text = cellViewModel.detail;
+    self.imageView.image = cellViewModel.image;
+    self.accessoryType = cellViewModel.accessoryType;
+    self.selectionStyle = cellViewModel.selectionStyle;
+    if (cellViewModel.attributedText) {
+        self.textLabel.attributedText = cellViewModel.attributedText;
+    }
 }
 
-
--(void)prepareForReuse {
-  [super prepareForReuse];
-  self.textLabel.text = nil;
-  self.detailTextLabel.text = nil;
-  self.imageView.image = nil;
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.textLabel.text = nil;
+    self.detailTextLabel.text = nil;
+    self.imageView.image = nil;
 }
 
 @end
@@ -49,24 +50,27 @@
 
 @implementation LPDTableViewValue1Cell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-  return [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    return [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
 }
 
 @end
 
 @implementation LPDTableViewValue2Cell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-  return [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    return [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
 }
 
 @end
 
 @implementation LPDTableViewSubtitleCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-  return [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    return [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
 }
 
 @end

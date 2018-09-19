@@ -13,7 +13,7 @@
 @protocol LPDTableSectionViewModelProtocol <NSObject>
 @required
 
-@property (nonatomic, copy) NSArray<__kindof id<LPDTableItemViewModelProtocol>> *rows;
+@property (nonatomic, copy) NSArray<__kindof id<LPDTableItemViewModelProtocol> > *rows;
 
 @optional
 

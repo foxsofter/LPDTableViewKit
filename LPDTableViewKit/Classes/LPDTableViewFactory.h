@@ -19,23 +19,23 @@
 @interface LPDTableViewFactory : NSObject
 
 - (__kindof id<LPDTableItemViewModelProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
-                            cellForTableView:(UITableView *)tableView
-                                 atIndexPath:(NSIndexPath *)indexPath;
+                                            cellForTableView:(UITableView *)tableView
+                                                 atIndexPath:(NSIndexPath *)indexPath;
 
 - (__kindof id<LPDTableItemViewModelProtocol>)cellWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
-                                      tableView:(UITableView *)tableView;
+                                                      tableView:(UITableView *)tableView;
 
 - (__kindof id<LPDTableItemViewModelProtocol>)tableViewModel:(__kindof id<LPDTableViewModelProtocol>)tableViewModel
-                            headerForTableView:(UITableView *)tableView
-                                     atSection:(NSInteger)sectionIndex;
+                                          headerForTableView:(UITableView *)tableView
+                                                   atSection:(NSInteger)sectionIndex;
 
 - (__kindof id<LPDTableItemViewModelProtocol>)headerWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
-                                          tableView:(UITableView *)tableView;
+                                                        tableView:(UITableView *)tableView;
 
 - (__kindof id<LPDTableItemViewModelProtocol>)tableViewModel:(__kindof id<LPDTableItemViewModelProtocol>)tableViewModel
-                            footerForTableView:(UITableView *)tableView
-                                     atSection:(NSInteger)sectionIndex;
+                                          footerForTableView:(UITableView *)tableView
+                                                   atSection:(NSInteger)sectionIndex;
 
 - (__kindof id<LPDTableItemViewModelProtocol>)footerWithViewModel:(__kindof id<LPDTableItemViewModelProtocol>)viewModel
-                                          tableView:(UITableView *)tableView;
+                                                        tableView:(UITableView *)tableView;
 @end

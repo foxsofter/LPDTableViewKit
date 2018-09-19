@@ -12,6 +12,6 @@
 
 @interface LPDTableSectionViewModel ()
 
-@property (nonatomic, strong) NSMutableArray<__kindof id<LPDTableItemViewModelProtocol>> *mutableRows;
+@property (nonatomic, strong) NSMutableArray<__kindof id<LPDTableItemViewModelProtocol> > *mutableRows;
 
 @end
